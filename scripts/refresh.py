@@ -15,7 +15,11 @@ data=load_old()
 countries=[('US','United States'),('TW','Taiwan'),('GB','United Kingdom'),('JP','Japan'),('CN','China'),('IN','India'),('DE','Germany'),('FR','France'),('KR','South Korea'),('CA','Canada')]
 def news_task(item):
     code,name=item
-    query=('artificial intelligence AI technology' if code=='AI' else name+' top news')+' when:1d'
+    domains=['reuters.com','apnews.com','bbc.com','cnn.com','theguardian.com','nytimes.com','ft.com','aljazeera.com']
+    regional={'TW':['focustaiwan.tw','taipeitimes.com'],'JP':['japantimes.co.jp','english.kyodonews.net'],'IN':['thehindu.com','indianexpress.com'],'KR':['koreaherald.com','koreatimes.co.kr'],'CA':['cbc.ca','ctvnews.ca'],'DE':['dw.com'],'FR':['france24.com','lemonde.fr'],'CN':['scmp.com'],'US':['nbcnews.com','cbsnews.com'],'GB':['bbc.co.uk']}
+    domains+=regional.get(code,[])
+    if code=='AI':domains+=['theverge.com','techcrunch.com','arstechnica.com','wired.com','technologyreview.com']
+    query=('artificial intelligence' if code=='AI' else name)+' ('+' OR '.join('site:'+d for d in domains)+') when:1d'
     url='https://news.google.com/rss/search?'+urllib.parse.urlencode({'q':query,'hl':'en-US','gl':'US','ceid':'US:en'})
     tree=ET.fromstring(get(url));rows=[];seen=set()
     for node in tree.findall('.//item'):
@@ -71,7 +75,7 @@ if not data.get('researchUpdated','').startswith(STAMP[:10]):
         for r in results:
             pubtypes=r.get('pubTypeList',{}).get('pubType',[])
             rows.append({'title':r['title'],'url':'https://europepmc.org/article/'+r['source']+'/'+r['id'],'journal':r.get('journalInfo',{}).get('journal',{}).get('title','Journal'),'date':r.get('firstPublicationDate',r.get('pubYear','Unknown')),'type':', '.join(pubtypes[:2]) or 'Publication','population':'Population and study limitations require full-text review'})
-        if rows:data['research']=rows;data['researchUpdated']=STAMP
+        if rows:data['research']=rows;data['researchUpdated']=STAMP;data['status']['research']={'ok':True,'updated':STAMP}
     except Exception as e:data['status']['research']={'ok':False,'checked':STAMP,'error':str(e)[:160]}
 data['checked']=STAMP
 DEST.parent.mkdir(exist_ok=True);DEST.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')

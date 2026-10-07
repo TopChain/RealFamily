@@ -6,7 +6,7 @@ Six-page, English-first family information website. No build dependencies. Serve
 
 Animated 呂 → Real Family heritage artwork; world and AI headlines with publisher links; major global index daily bars with local session dates; life-stage and sex considerations; 20 original recipes across 10 cuisines; seven illustrated English lessons with speech playback; large text mode and accessible responsive layouts.
 
-The language selector opens Google Translate for the current page in Traditional Chinese, Simplified Chinese, Japanese, Korean or Spanish. It is an external translation service, not a bundled human-reviewed localization. Dynamic-page translation availability depends on that service.
+The language selector translates visible text in place into Traditional Chinese, Simplified Chinese, Japanese, Korean or Spanish through Google’s public translation endpoint. This is machine translation, not human-reviewed localization. Public-endpoint availability has no contractual SLA; failures are visible and the original English can always be restored.
 
 ## Updates
 
@@ -16,7 +16,7 @@ Google News RSS aggregates regional and AI headlines; feed relevance is not an i
 
 Technical observations are deterministic rules, clearly marked as not AI. Full constituent turnover, a dated market-cap ranking, and AI-generated analysis require additional verified data/model services. Missing data is shown as unavailable rather than fabricated. The user has requested Neon for any future database: no Supabase integration is used. Current data is published JSON and does not require a database.
 
-The parent site serves this independent repository through an iframe at `/real-family/`, so hourly updates from this repository are visible without a cross-repository credential. The optional `PARENT_SITE_TOKEN` syncing step is unnecessary for that deployment.
+The parent site serves a static copy at `/real-family/`. Its hourly workflow copies the verified JSON from the independent repository at minute 42, after the source refresh at minute 17. No cross-repository credential is needed.
 
 ## Sources & safety
 
