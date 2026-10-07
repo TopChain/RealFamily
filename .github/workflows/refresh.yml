@@ -1,7 +1,7 @@
 name: Hourly verified source refresh
 on:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -24,9 +24,3 @@ jobs:
           git add data/latest.json
           git diff --cached --quiet || git commit -m 'Refresh verified public sources'
           git push
-      - name: Update parent website
-        env:
-          PARENT_TOKEN: ${{ secrets.PARENT_SITE_TOKEN }}
-        if: ${{ env.PARENT_TOKEN != '' }}
-        run: |
-          python scripts/sync_parent.py

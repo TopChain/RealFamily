@@ -1,23 +1,27 @@
 # Real Family
 
-Six-page, English-first family information website. No build dependencies. Serve the directory with any static server. Main deployment: https://www.topchainfresh.com/real-family/ . Independent repository: TopChain/RealFamily.
+Six-page, English-first family information website. No build dependencies. Serve the directory with any static server. Main deployment: https://www.topchainfresh.com/realfamily/ . Independent repository: TopChain/RealFamily.
 
 ## Features
 
-Animated 呂 → Real Family heritage artwork; world and AI headlines with publisher links; major global index daily bars with local session dates; life-stage and sex considerations; 20 original recipes across 10 cuisines; seven illustrated English lessons with speech playback; large text mode and accessible responsive layouts.
+Animated Real Family wordmark; world and AI headlines with publisher links; major global index daily bars with local session dates; life-stage and sex considerations; 20 original recipes across 10 cuisines; seven illustrated English lessons with speech playback; large text mode and accessible responsive layouts.
 
 The language selector translates visible text in place into Traditional Chinese, Simplified Chinese, Japanese, Korean or Spanish through Google’s public translation endpoint. This is machine translation, not human-reviewed localization. Public-endpoint availability has no contractual SLA; failures are visible and the original English can always be restored.
 
 ## Updates
 
-Run `python3 scripts/refresh.py`. GitHub Actions runs hourly at minute 17; research is refreshed once daily. Scheduled Actions can be delayed, and public-repository schedules can be disabled by GitHub after inactivity. Check workflow runs to confirm health. Previous verified data is preserved on source failures.
+Run `python3 scripts/refresh.py`. GitHub Actions runs hourly at the start of every hour; research is refreshed once daily. Scheduled Actions can be delayed, and public-repository schedules can be disabled by GitHub after inactivity. Check workflow runs to confirm health. Previous verified data is preserved on source failures.
 
 Google News RSS aggregates regional and AI headlines; feed relevance is not an independently verified importance/popularity ranking. Europe PMC provides recent research metadata; it is not yet AI-reviewed. Yahoo Finance chart endpoints provide best-effort daily bars and may restrict requests. Index coverage is a curated list of major benchmarks, not all existing indices or a verified top-ten market-cap ranking. Historical bars are not asserted to be official finalized exchange closes.
 
 Technical observations are deterministic rules, clearly marked as not AI. Full constituent turnover, a dated market-cap ranking, and AI-generated analysis require additional verified data/model services. Missing data is shown as unavailable rather than fabricated. The user has requested Neon for any future database: no Supabase integration is used. Current data is published JSON and does not require a database.
 
-The parent site serves a static copy at `/real-family/`. Its hourly workflow copies the verified JSON from the independent repository at minute 42, after the source refresh at minute 17. No cross-repository credential is needed.
+The parent site serves a static copy at `/realfamily/`. Its hourly workflow refreshes the public feeds directly using the same updater as the independent repository. No cross-repository credential is needed.
 
 ## Sources & safety
 
 Health foundations link to WHO, NIH and CDC. Food temperatures link to USDA. General health education does not individualize prescriptions. Market observations are for reference only, not investment advice. Supplied learning-card images are displayed as cropped illustrations; Chinese copy remains outside the visible image frame. The quote shown is Franklin’s *Poor Richard’s Almanack* rather than the supplied unverified Emerson attribution.
+
+News and markets are refreshed hourly. Health research and curated daily kitchen picks/English practice rotate at the first run after midnight America/Los_Angeles, with daylight saving handled by zoneinfo. These daily rotations reuse the curated catalog, not newly AI-generated content. Market status uses the provider’s regular-session interval, with explicit lunch breaks and no fabricated holiday calendar; missing session metadata yields Status unavailable.
+
+All displayed publication/update timestamps and the page date use Pacific Time (America/Los_Angeles), with PDT/PST where applicable. Exchange trading dates are separately labelled with their own local timezone.

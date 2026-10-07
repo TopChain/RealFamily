@@ -1,10 +1,13 @@
 """Public-source refresh. No secrets, fabricated prices, or paid data access."""
 import concurrent.futures, datetime as dt, json, pathlib, urllib.request, urllib.parse, xml.etree.ElementTree as ET, zoneinfo, re
+from session_status import classify
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 DEST=ROOT/'data/latest.json'
 NOW=dt.datetime.now(dt.timezone.utc)
 STAMP=NOW.isoformat()
+PACIFIC=zoneinfo.ZoneInfo('America/Los_Angeles')
+DAILY_DATE=NOW.astimezone(PACIFIC).date().isoformat()
 HEADERS={'User-Agent':'Mozilla/5.0 (compatible; RealFamily/1.0; public educational news digest)'}
 def get(url):
     with urllib.request.urlopen(urllib.request.Request(url,headers=HEADERS),timeout=25) as r: return r.read()
@@ -54,20 +57,23 @@ def market_task(symbol,tz,close_time):
     bars=[(t,c) for t,c in zip(times,quotes['close']) if c is not None]
     if len(bars)<2:raise ValueError('Insufficient history')
     timestamp,close=bars[-1];previous=bars[-2][1];local=dt.datetime.fromtimestamp(timestamp,zoneinfo.ZoneInfo(tz));local_now=NOW.astimezone(zoneinfo.ZoneInfo(tz))
-    provisional=local.date()==local_now.date() and local_now.strftime('%H:%M')<close_time
+    regular=chart.get('meta',{}).get('currentTradingPeriod',{}).get('regular',{})
+    market_status=classify(NOW,regular,tz)
+    provisional=local.date()==local_now.date() and market_status in ['Trading now','Lunch break','Not yet open']
     change=(close/previous-1)*100;ma20=sum(c for _,c in bars[-20:])/min(20,len(bars))
     direction='above' if close>ma20 else 'below'
     analysis=f'Rule-based observation (not AI): the latest daily bar changed {change:+.2f}% and sits {direction} its 20-session average ({ma20:,.2f}). Next session, watch whether price holds that average and whether participation confirms the move. No directional forecast is asserted.'
-    return symbol,{'close':close,'change':change,'session':local.strftime('%Y-%m-%d'),'state':'Provisional daily bar' if provisional else 'Historical daily bar; finality unverified','updated':STAMP,'timezone':tz,'analysis':analysis,'source':url}
+    return symbol,{'close':close,'change':change,'session':local.strftime('%Y-%m-%d'),'state':'Provisional daily bar' if provisional else 'Historical daily bar; finality unverified','updated':STAMP,'timezone':tz,'marketStatus':market_status,'regularSession':regular,'analysis':analysis,'source':url}
 with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
     futures={pool.submit(market_task,s,t,c):s for t,c,symbols in markets for s in symbols}
     for future in concurrent.futures.as_completed(futures):
         symbol=futures[future]
         try:key,row=future.result();data['markets'][key]=row;data['status'][symbol]={'ok':True,'updated':STAMP}
         except Exception as e:data['status'][symbol]={'ok':False,'checked':STAMP,'error':str(e)[:160]}
-data['marketUpdated']=STAMP
+if any(v.get('updated')==STAMP for v in data['markets'].values()):data['marketUpdated']=STAMP
 # Refresh research at most daily. Indexing date and publication date are separate.
-if not data.get('researchUpdated','').startswith(STAMP[:10]):
+research_date=dt.datetime.fromisoformat(data['researchUpdated']).astimezone(PACIFIC).date().isoformat() if data.get('researchUpdated') else None
+if research_date!=DAILY_DATE:
     try:
         query='(nutrition OR exercise OR dietary supplements) AND (infant OR adolescent OR adult OR elderly) AND FIRST_PDATE:['+(NOW-dt.timedelta(days=60)).strftime('%Y-%m-%d')+' TO '+NOW.strftime('%Y-%m-%d')+']'
         url='https://www.ebi.ac.uk/europepmc/webservices/rest/search?'+urllib.parse.urlencode({'query':query,'format':'json','pageSize':8,'sort':'FIRST_PDATE_D desc','resultType':'core'})
@@ -77,6 +83,9 @@ if not data.get('researchUpdated','').startswith(STAMP[:10]):
             rows.append({'title':r['title'],'url':'https://europepmc.org/article/'+r['source']+'/'+r['id'],'journal':r.get('journalInfo',{}).get('journal',{}).get('title','Journal'),'date':r.get('firstPublicationDate',r.get('pubYear','Unknown')),'type':', '.join(pubtypes[:2]) or 'Publication','population':'Population and study limitations require full-text review'})
         if rows:data['research']=rows;data['researchUpdated']=STAMP;data['status']['research']={'ok':True,'updated':STAMP}
     except Exception as e:data['status']['research']={'ok':False,'checked':STAMP,'error':str(e)[:160]}
+if data.get('daily',{}).get('date')!=DAILY_DATE:
+    offset=NOW.astimezone(PACIFIC).date().toordinal()
+    data['daily']={'date':DAILY_DATE,'timezone':'America/Los_Angeles','kitchenUpdated':STAMP,'englishUpdated':STAMP,'recipeIndices':[(offset%10)*2,(offset%10)*2+1],'practiceEdition':offset%3,'mode':'Curated daily selection and practice rotation'}
 data['checked']=STAMP
 DEST.parent.mkdir(exist_ok=True);DEST.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({'news_countries':len(data['countries']),'ai_stories':len(data['ai']),'market_benchmarks':len(data['markets']),'research_papers':len(data['research']),'failed_sources':[k for k,v in data['status'].items() if not v['ok']]}))
