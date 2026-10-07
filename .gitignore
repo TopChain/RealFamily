@@ -4,3 +4,4 @@ parent-site/
 node_modules/
 .env*
 !.env.example
+data/english-mail-log.json
