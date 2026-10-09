@@ -1,0 +1,30 @@
+name: Complete Gmail offline authorization
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: real-family-gmail-authorization
+  cancel-in-progress: false
+jobs:
+  authorize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exchange authorization and verify sender
+        env:
+          GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          GMAIL_AUTHORIZATION_CODE: ${{ secrets.GMAIL_AUTHORIZATION_CODE }}
+          GMAIL_PKCE_VERIFIER: ${{ secrets.GMAIL_PKCE_VERIFIER }}
+        run: python scripts/oauth/exchange_gmail.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: encrypted-gmail-authorization
+          path: gmail-refresh.enc
+          retention-days: 1
+          if-no-files-found: error
