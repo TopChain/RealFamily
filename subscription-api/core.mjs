@@ -23,6 +23,12 @@ export function createService(pool,env){
  const html=(body,status=200)=>new Response(shell(body),{status,headers:{...headers,'Content-Type':'text/html; charset=utf-8','Content-Security-Policy':"default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'"}});
  if(request.method==='OPTIONS')return new Response(null,{status:origins.has(origin)?204:403,headers});
  if(action==='health')return json({ok:true});
+ if(action.startsWith('wa-')){
+  if(!isAdmin(request))return json({error:'Unauthorized'},401);
+  if(request.method!=='POST')return json({error:'Method not allowed'},405);
+  try{const {whatsappAction}=await import('./whatsapp.mjs');return json(await whatsappAction(pool,action,await request.json()))}
+  catch{return json({error:'WhatsApp private request failed'},400)}
+ }
  if(action.startsWith('mail-')){
   if(!isAdmin(request))return json({error:'Unauthorized'},401);
   if(action==='mail-digests'&&request.method==='POST'){

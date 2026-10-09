@@ -1,0 +1,1 @@
+{"name":"real-family-whatsapp-relay","private":true,"type":"module","engines":{"node":">=22"},"dependencies":{"@whiskeysockets/baileys":"7.0.0-rc14","pino":"10.4.0","qrcode":"1.5.4"}}
