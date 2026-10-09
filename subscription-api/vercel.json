@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "builds": [{ "src": "api/subscription.mjs", "use": "@vercel/node" }],
+  "routes": [{ "src": "/api/subscription", "dest": "/api/subscription.mjs" }]
+}
