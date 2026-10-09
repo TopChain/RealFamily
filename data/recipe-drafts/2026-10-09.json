@@ -1,0 +1,236 @@
+{
+  "date": "2026-10-09",
+  "recipes": [
+    {
+      "cuisine": "American",
+      "meal": "Main",
+      "title": "Autumn Harvest Turkey Meatballs",
+      "serves": 6,
+      "prep": 20,
+      "cook": 30,
+      "ingredients": [
+        {
+          "name": "Ground turkey",
+          "amount": "900g"
+        },
+        {
+          "name": "Dried cranberries, chopped",
+          "amount": "100g"
+        },
+        {
+          "name": "Panko breadcrumbs",
+          "amount": "60g"
+        },
+        {
+          "name": "Egg",
+          "amount": "1 count"
+        },
+        {
+          "name": "Fresh sage, minced",
+          "amount": "10g"
+        },
+        {
+          "name": "Salt",
+          "amount": "8g"
+        },
+        {
+          "name": "Black pepper",
+          "amount": "3g"
+        },
+        {
+          "name": "Olive oil",
+          "amount": "30mL"
+        },
+        {
+          "name": "Chicken broth",
+          "amount": "250mL"
+        }
+      ],
+      "steps": [
+        "Preheat the oven to 400°F / 200°C. Line a large rimmed baking sheet with parchment paper.",
+        "In a large bowl, gently combine turkey, cranberries, breadcrumbs, egg, sage, salt, and pepper until just mixed; do not overwork.",
+        "Shape the mixture into 18 equal meatballs, approximately 60g each.",
+        "Heat olive oil in a large oven-safe skillet over medium-high heat. Brown the meatballs in batches for 5 minutes, turning carefully.",
+        "Transfer browned meatballs to the prepared baking sheet. Pour chicken broth into the pan to deglaze, then pour over the meatballs.",
+        "Bake for 15-20 minutes until the center of the meatballs reaches 165°F / 74°C.",
+        "Remove from the oven and let rest for 5 minutes. Serve three meatballs per person with pan juices.",
+        "Refrigerate leftovers within 2 hours; consume within 3-4 days. Reheat to 165°F / 74°C."
+      ],
+      "allergens": [
+        "Egg",
+        "Wheat"
+      ],
+      "note": "The cranberries add a subtle sweetness perfect for the October season.",
+      "storage": "Store in an airtight container in the refrigerator for up to 4 days. Not recommended for freezing due to texture changes.",
+      "photoSearch": "turkey meatballs with cranberry"
+    },
+    {
+      "cuisine": "American",
+      "meal": "Snack",
+      "title": "Maple Glazed Roasted Pumpkin Seeds",
+      "serves": 6,
+      "prep": 15,
+      "cook": 25,
+      "ingredients": [
+        {
+          "name": "Raw pumpkin seeds",
+          "amount": "300g"
+        },
+        {
+          "name": "Maple syrup",
+          "amount": "45mL"
+        },
+        {
+          "name": "Melted butter",
+          "amount": "30g"
+        },
+        {
+          "name": "Sea salt",
+          "amount": "5g"
+        },
+        {
+          "name": "Ground nutmeg",
+          "amount": "2g"
+        }
+      ],
+      "steps": [
+        "Preheat the oven to 350°F / 175°C. Line a baking sheet with parchment paper.",
+        "Rinse seeds thoroughly and pat completely dry with a clean kitchen towel to ensure crunchiness.",
+        "In a medium bowl, toss the dry seeds with melted butter, maple syrup, nutmeg, and salt until evenly coated.",
+        "Spread the seeds in a single layer on the baking sheet, ensuring they do not overlap.",
+        "Roast for 20-25 minutes, stirring every 8 minutes to prevent burning and ensure even caramelization.",
+        "Remove when seeds are deep golden brown. They will continue to crisp up as they cool.",
+        "Divide into six small bowls, approximately 50g each.",
+        "Store in an airtight container at room temperature for up to 5 days; if they lose crispness, re-toast in the oven for 3 minutes."
+      ],
+      "allergens": [
+        "Milk"
+      ],
+      "note": "Best enjoyed as a crunchy seasonal snack.",
+      "storage": "Keep in an airtight jar at room temperature for up to 1 week.",
+      "photoSearch": "roasted pumpkin seeds maple"
+    },
+    {
+      "cuisine": "European",
+      "meal": "Main",
+      "title": "Rustic Root Vegetable Shepherd's Pie",
+      "serves": 6,
+      "prep": 25,
+      "cook": 45,
+      "ingredients": [
+        {
+          "name": "Lean ground beef",
+          "amount": "600g"
+        },
+        {
+          "name": "Potatoes, peeled and cubed",
+          "amount": "800g"
+        },
+        {
+          "name": "Carrots, diced",
+          "amount": "200g"
+        },
+        {
+          "name": "Frozen peas",
+          "amount": "150g"
+        },
+        {
+          "name": "Onion, diced",
+          "amount": "150g"
+        },
+        {
+          "name": "Tomato paste",
+          "amount": "30g"
+        },
+        {
+          "name": "Beef broth",
+          "amount": "200mL"
+        },
+        {
+          "name": "Butter",
+          "amount": "40g"
+        },
+        {
+          "name": "Milk",
+          "amount": "100mL"
+        },
+        {
+          "name": "Dried thyme",
+          "amount": "3g"
+        }
+      ],
+      "steps": [
+        "Preheat the oven to 400°F / 200°C. Boil potatoes in salted water until tender, then mash with butter and milk.",
+        "In a large skillet, brown the beef with onions and carrots over medium-high heat until the meat reaches 160°F / 71°C.",
+        "Stir in tomato paste, thyme, and beef broth. Simmer for 8 minutes until the liquid reduces slightly.",
+        "Stir in the frozen peas and season with salt and pepper to taste.",
+        "Transfer the meat mixture to a 25cm baking dish.",
+        "Spread the mashed potatoes evenly over the meat, using a fork to create textured peaks.",
+        "Bake for 20-25 minutes until the top is golden and bubbling.",
+        "Divide into six portions. Refrigerate leftovers within 2 hours; consume within 3-4 days. Reheat to 165°F / 74°C."
+      ],
+      "allergens": [
+        "Milk"
+      ],
+      "note": "A warming European classic for cooling October evenings.",
+      "storage": "Cover tightly and refrigerate for up to 4 days. Can be frozen for up to 1 month; thaw in the refrigerator before reheating.",
+      "photoSearch": "shepherds pie rustic"
+    },
+    {
+      "cuisine": "European",
+      "meal": "Snack",
+      "title": "Herbed Goat Cheese Crostini",
+      "serves": 6,
+      "prep": 15,
+      "cook": 10,
+      "ingredients": [
+        {
+          "name": "Baguette, sliced",
+          "amount": "18 slices"
+        },
+        {
+          "name": "Goat cheese",
+          "amount": "200g"
+        },
+        {
+          "name": "Fresh chives, chopped",
+          "amount": "15g"
+        },
+        {
+          "name": "Honey",
+          "amount": "30mL"
+        },
+        {
+          "name": "Olive oil",
+          "amount": "15mL"
+        },
+        {
+          "name": "Walnuts, crushed",
+          "amount": "50g"
+        }
+      ],
+      "steps": [
+        "Preheat the oven to 375°F / 190°C.",
+        "Brush baguette slices lightly with olive oil and place on a baking sheet.",
+        "Toast in the oven for 8-10 minutes until golden brown and crisp.",
+        "In a small bowl, whisk the goat cheese until creamy and fold in half the chives.",
+        "Spread approximately 10g of goat cheese onto each toasted baguette slice.",
+        "Top each slice with a small amount of crushed walnuts and a drizzle of honey.",
+        "Garnish with remaining chives.",
+        "Serve three crostini per person. Refrigerate any leftovers in an airtight container for up to 2 days."
+      ],
+      "allergens": [
+        "Wheat",
+        "Milk",
+        "Tree nuts"
+      ],
+      "note": "A sophisticated, simple snack using classic European ingredients.",
+      "storage": "Best served immediately. Keep toppings and bread separate if preparing ahead of time.",
+      "photoSearch": "goat cheese crostini honey"
+    }
+  ],
+  "generation": {
+    "textModel": "gemini-3.1-flash-lite",
+    "kind": "new-daily-recipes"
+  }
+}
