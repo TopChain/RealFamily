@@ -38,6 +38,10 @@ jobs:
           cache: npm
           cache-dependency-path: scripts/render/package-lock.json
       - run: npm ci --prefix scripts/render
+      - name: Verify safe topic comics and portable full-card layout
+        run: |
+          node --test scripts/tests/comic_scene.test.cjs
+          python scripts/render_smoke.py
       - name: Check confirmed free text API
         if: inputs.check_api == true
         run: python scripts/generate_english.py --check-api

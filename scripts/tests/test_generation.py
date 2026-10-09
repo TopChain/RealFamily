@@ -15,7 +15,9 @@ class GenerationTests(unittest.TestCase):
             (g.ROOT/'data').mkdir();(g.ROOT/'data/english-generation-status.json').write_text('{"paused":true}')
             with self.assertRaises(AssertionError):g.reserve_request('2026-10-09')
     def test_existing_complete_dates_do_not_call_gemini(self):
-        with patch.object(g,'generate',side_effect=AssertionError('No API should run')):
-            day=datetime.datetime.now(g.PACIFIC).date()
-            g.prepare(day.isoformat());g.prepare((day+datetime.timedelta(days=1)).isoformat())
+        class Fixed(datetime.datetime):
+            @classmethod
+            def now(cls,tz=None):return cls(2026,10,8,12,tzinfo=g.PACIFIC)
+        with patch.object(g,'generate',side_effect=AssertionError('No API should run')),patch.object(g.dt,'datetime',Fixed):
+            g.prepare('2026-10-08');g.prepare('2026-10-09')
 if __name__=='__main__':unittest.main()
