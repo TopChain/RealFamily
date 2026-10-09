@@ -38,7 +38,7 @@ export function digestContent(data,topics,date,options={}){
   if(topic==='english'){
    if(data.english?.date!==date)continue;
    const colors={vocabulary:'#b82c30',phrasal:'#ad5018',idiom:'#926a0c',life:'#1c5840',grammar:'#244890',quote:'#503773','small-talk':'#25272c'},categories={vocabulary:'Vocabulary',phrasal:'Phrasal verbs',idiom:'Idioms & slang',life:'Life phrases',grammar:'Grammar',quote:'Quote','small-talk':'Small talk'};
-   body=p('Ten small lessons. More precise words, natural conversations and a little more confidence.')+data.english.lessons.map(l=>card(eyebrow(categories[l.image]+' · '+(l.level||'B2–C1'))+title(l.title)+p(l.meaning)+`<p style="font:18px/1.65 Arial,sans-serif;margin:16px 0;color:#354c40;border-left:3px solid ${colors[l.image]};padding-left:15px">${esc(l.example)}</p>`+a('Open & save the complete learning card ↗',home+'data/english-images/'+date+'/'+l.id+'.png?revision='+(data.english.revision||1)),colors[l.image])).join('');
+   body=p('Ten small lessons. More precise words, natural conversations and a little more confidence.')+data.english.lessons.map(l=>card(eyebrow(categories[l.image]+' · '+(l.level||'B2–C1'))+title(l.title)+p(l.meaning)+`<p style="font:18px/1.65 Arial,sans-serif;margin:16px 0;color:#354c40;border-left:3px solid ${colors[l.image]};padding-left:15px">${esc(l.example)}</p>`+a('Open & save the complete learning card ↗',home+'data/english-images/'+date+'/'+encodeURIComponent(l.filename||l.id+'.png')+'?revision='+(data.english.revision||1)),colors[l.image])).join('');
   }
   sections.push(eyebrow('REAL FAMILY / '+TOPICS[topic])+body+button('Explore '+TOPICS[topic],home+(topic==='english'?'?lesson-date='+date:'')+'#'+topic));
  }

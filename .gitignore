@@ -6,3 +6,5 @@ node_modules/
 !.env.example
 data/english-mail-log.json
 data/whatsapp-routing.private.json
+
+data/whatsapp-send-log.private.json
