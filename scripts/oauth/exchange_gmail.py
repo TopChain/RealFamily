@@ -1,5 +1,5 @@
 """One-time cloud exchange. Never print OAuth credentials or Google responses."""
-import json,os,pathlib,subprocess,urllib.parse,urllib.request
+import json,os,pathlib,subprocess,urllib.parse,urllib.request,urllib.error
 
 def main():
     body=urllib.parse.urlencode({'client_id':os.environ['GMAIL_CLIENT_ID'],'client_secret':os.environ['GMAIL_CLIENT_SECRET'],'code':os.environ['GMAIL_AUTHORIZATION_CODE'],'code_verifier':os.environ['GMAIL_PKCE_VERIFIER'],'redirect_uri':'http://127.0.0.1:8769/callback','grant_type':'authorization_code'}).encode()
@@ -13,7 +13,12 @@ def main():
         with urllib.request.urlopen(req,timeout=30) as r:profile=json.load(r)
         if profile.get('emailAddress','').lower()!='topchainfresh@gmail.com':raise ValueError('Wrong sender')
         subprocess.run(['openssl','pkeyutl','-encrypt','-pubin','-inkey','scripts/oauth/bootstrap-public.pem','-pkeyopt','rsa_padding_mode:oaep','-pkeyopt','rsa_oaep_md:sha256','-out','gmail-refresh.enc'],input=result['refresh_token'].encode(),check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-    except Exception:raise SystemExit('OAuth exchange failed. Credentials and provider response are omitted. Reauthorize if needed.') from None
+    except urllib.error.HTTPError as exc:
+        try:reason=json.loads(exc.read()).get('error','unknown')
+        except Exception:reason='unknown'
+        if reason not in {'invalid_client','invalid_grant','invalid_request','unauthorized_client','access_denied'}:reason='provider_request_failed'
+        raise SystemExit('OAuth exchange failed: '+reason+'. No credentials or provider details are printed.') from None
+    except Exception:raise SystemExit('OAuth validation or encryption failed; no credentials are printed.') from None
     print('Sender and both Gmail permissions verified. Refresh credential encrypted for private installation.')
 
 if __name__=='__main__':main()
