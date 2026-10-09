@@ -240,10 +240,898 @@
       "note": "A sophisticated, simple snack using classic European ingredients.",
       "storage": "Best served immediately. Keep toppings and bread separate if preparing ahead of time.",
       "photoSearch": "crostini"
+    },
+    {
+      "cuisine": "Japanese",
+      "meal": "Main",
+      "title": "Miso Glazed Cod with Bok Choy",
+      "serves": 6,
+      "prep": 15,
+      "cook": 20,
+      "ingredients": [
+        {
+          "name": "Cod fillets",
+          "amount": "900g"
+        },
+        {
+          "name": "White miso paste",
+          "amount": "90g"
+        },
+        {
+          "name": "Mirin",
+          "amount": "45mL"
+        },
+        {
+          "name": "Sake",
+          "amount": "45mL"
+        },
+        {
+          "name": "Granulated sugar",
+          "amount": "30g"
+        },
+        {
+          "name": "Bok choy",
+          "amount": "600g"
+        },
+        {
+          "name": "Neutral oil",
+          "amount": "15mL"
+        },
+        {
+          "name": "Uncooked short-grain rice",
+          "amount": "450g"
+        },
+        {
+          "name": "Water for rice",
+          "amount": "600mL"
+        }
+      ],
+      "steps": [
+        "Rinse rice and cook in a rice cooker or covered pot according to package instructions.",
+        "Whisk miso, mirin, sake, and sugar in a bowl until smooth. Pat cod dry and coat with marinade; refrigerate for 30 minutes.",
+        "Preheat oven to 400°F / 200°C. Line a large sheet pan with parchment paper.",
+        "Place cod on the pan and bake for 12-15 minutes until fish reaches 145°F / 63°C and flakes easily.",
+        "While fish bakes, trim bok choy, halve lengthwise, and wash thoroughly.",
+        "Heat oil in a large skillet over medium-high heat. Sear bok choy cut-side down for 3 minutes until charred.",
+        "Add 30mL water to the skillet, cover, and steam for 2 minutes until tender.",
+        "Divide rice, bok choy, and cod among six bowls; serve immediately."
+      ],
+      "allergens": "Fish, Soy",
+      "note": "Ensure fish reaches internal temperature safely.",
+      "storage": "Store in airtight containers in refrigerator for up to 3 days. Reheat to 165°F / 74°C.",
+      "photoSearch": "miso glazed fish"
+    },
+    {
+      "cuisine": "Japanese",
+      "meal": "Snack",
+      "title": "Sweet Potato Karinto",
+      "serves": 6,
+      "prep": 10,
+      "cook": 25,
+      "ingredients": [
+        {
+          "name": "Japanese sweet potato",
+          "amount": "600g"
+        },
+        {
+          "name": "Neutral oil for frying",
+          "amount": "500mL"
+        },
+        {
+          "name": "Granulated sugar",
+          "amount": "100g"
+        },
+        {
+          "name": "Water",
+          "amount": "30mL"
+        },
+        {
+          "name": "Black sesame seeds",
+          "amount": "5g"
+        }
+      ],
+      "steps": [
+        "Cut sweet potatoes into 1cm x 5cm sticks. Soak in cold water for 10 minutes to remove excess starch.",
+        "Pat sticks completely dry with a clean towel to prevent splattering.",
+        "Heat oil in a deep pan to 320°F / 160°C. Fry sticks in small batches for 6-8 minutes until golden and crisp.",
+        "Drain fried potatoes on a wire rack or paper towels.",
+        "In a clean pan, combine sugar and water. Heat over medium until it bubbles and turns a light amber syrup.",
+        "Toss the fried potato sticks in the syrup until coated. Work quickly.",
+        "Spread on a parchment-lined tray and sprinkle immediately with sesame seeds.",
+        "Cool for 10 minutes until the sugar hardens. Serve in six small portions."
+      ],
+      "allergens": "Sesame",
+      "note": "Ensure oil is handled safely during frying.",
+      "storage": "Store in an airtight container at room temperature for up to 3 days.",
+      "photoSearch": "sweet potato fries"
+    },
+    {
+      "cuisine": "Mediterranean",
+      "meal": "Main",
+      "title": "Baked Mediterranean Sea Bass",
+      "serves": 6,
+      "prep": 20,
+      "cook": 25,
+      "ingredients": [
+        {
+          "name": "Sea bass fillets",
+          "amount": "900g"
+        },
+        {
+          "name": "Cherry tomatoes",
+          "amount": "300g"
+        },
+        {
+          "name": "Kalamata olives, pitted",
+          "amount": "100g"
+        },
+        {
+          "name": "Capers, drained",
+          "amount": "30g"
+        },
+        {
+          "name": "Red onion, sliced",
+          "amount": "150g"
+        },
+        {
+          "name": "Olive oil",
+          "amount": "45mL"
+        },
+        {
+          "name": "Dried oregano",
+          "amount": "5g"
+        },
+        {
+          "name": "Lemon, sliced",
+          "amount": "120g"
+        },
+        {
+          "name": "Fresh parsley, chopped",
+          "amount": "20g"
+        }
+      ],
+      "steps": [
+        "Preheat oven to 400°F / 200°C.",
+        "In a large bowl, toss tomatoes, olives, capers, onion, oil, and oregano.",
+        "Arrange the vegetable mixture on a large rimmed baking sheet.",
+        "Nestle the sea bass fillets among the vegetables. Top each fillet with a lemon slice.",
+        "Bake for 15-20 minutes until fish is opaque and reaches 145°F / 63°C.",
+        "Remove from oven and let rest for 3 minutes.",
+        "Divide into six portions, ensuring each serving gets a mix of vegetables and fish.",
+        "Garnish with fresh parsley before serving."
+      ],
+      "allergens": "Fish",
+      "note": "Check for stray olive pits.",
+      "storage": "Refrigerate in a sealed container for up to 3 days. Reheat to 165°F / 74°C.",
+      "photoSearch": "baked white fish with tomatoes"
+    },
+    {
+      "cuisine": "Mediterranean",
+      "meal": "Snack",
+      "title": "Spiced Roasted Broad Beans",
+      "serves": 6,
+      "prep": 5,
+      "cook": 30,
+      "ingredients": [
+        {
+          "name": "Dried broad beans (fava), soaked",
+          "amount": "400g"
+        },
+        {
+          "name": "Olive oil",
+          "amount": "30mL"
+        },
+        {
+          "name": "Smoked paprika",
+          "amount": "5g"
+        },
+        {
+          "name": "Garlic powder",
+          "amount": "5g"
+        },
+        {
+          "name": "Sea salt",
+          "amount": "3g"
+        }
+      ],
+      "steps": [
+        "Preheat oven to 400°F / 200°C.",
+        "Ensure beans are soaked overnight then boiled for 10 minutes and patted very dry.",
+        "In a bowl, toss the dry beans with olive oil, paprika, garlic powder, and salt.",
+        "Spread in a single layer on a large baking sheet.",
+        "Roast for 25-30 minutes, shaking the pan every 10 minutes to ensure even browning.",
+        "The beans should be crunchy but not burnt.",
+        "Cool completely on the pan, as they crisp up while cooling.",
+        "Divide into six small bowls for serving."
+      ],
+      "allergens": "None",
+      "note": "Ensure beans are thoroughly dried before oiling for maximum crunch.",
+      "storage": "Store in an airtight jar at room temperature for up to 4 days.",
+      "photoSearch": "roasted fava beans"
+    },
+    {
+      "cuisine": "Chinese",
+      "meal": "Main",
+      "title": "Five-Spice Braised Pork Belly",
+      "serves": 6,
+      "prep": 20,
+      "cook": 90,
+      "ingredients": [
+        {
+          "name": "Pork belly, skin-on",
+          "amount": "1200g"
+        },
+        {
+          "name": "Neutral oil",
+          "amount": "30mL"
+        },
+        {
+          "name": "Rock sugar",
+          "amount": "40g"
+        },
+        {
+          "name": "Star anise",
+          "amount": "3 count"
+        },
+        {
+          "name": "Cinnamon stick",
+          "amount": "1 count"
+        },
+        {
+          "name": "Fresh ginger, sliced",
+          "amount": "30g"
+        },
+        {
+          "name": "Garlic, smashed",
+          "amount": "20g"
+        },
+        {
+          "name": "Soy sauce",
+          "amount": "80mL"
+        },
+        {
+          "name": "Dark soy sauce",
+          "amount": "20mL"
+        },
+        {
+          "name": "Water",
+          "amount": "1000mL"
+        },
+        {
+          "name": "Scallions, chopped",
+          "amount": "30g"
+        }
+      ],
+      "steps": [
+        "Cut pork belly into 4cm cubes. Blanch in boiling water for 3 minutes, drain, and pat dry.",
+        "Heat oil in a heavy-bottomed pot over medium heat. Add rock sugar and stir until melted and amber-colored.",
+        "Add pork to the pot, coating well with the sugar syrup. Add ginger, garlic, star anise, and cinnamon.",
+        "Stir in soy sauce and dark soy sauce. Pour in water until the meat is just covered.",
+        "Bring to a boil, then cover and reduce heat to low. Simmer for 75-80 minutes until the meat is fork-tender.",
+        "Remove the lid and increase heat to medium-high to reduce the sauce until thick and glossy, about 10 minutes.",
+        "Check internal temperature reaches 160°F/71°C. Remove spices.",
+        "Serve in six bowls garnished with scallions."
+      ],
+      "allergens": "Soy",
+      "note": "Best served with steamed bok choy to balance the richness.",
+      "storage": "Refrigerate in an airtight container within 2 hours; consume within 3 days. Reheat to 165°F/74°C.",
+      "photoSearch": "Braised pork belly"
+    },
+    {
+      "cuisine": "Chinese",
+      "meal": "Snack",
+      "title": "Crispy Spiced Lotus Root Chips",
+      "serves": 6,
+      "prep": 15,
+      "cook": 25,
+      "ingredients": [
+        {
+          "name": "Fresh lotus root, peeled",
+          "amount": "600g"
+        },
+        {
+          "name": "Neutral oil",
+          "amount": "500mL"
+        },
+        {
+          "name": "Five-spice powder",
+          "amount": "5g"
+        },
+        {
+          "name": "Salt",
+          "amount": "4g"
+        },
+        {
+          "name": "White pepper",
+          "amount": "2g"
+        },
+        {
+          "name": "Cornstarch",
+          "amount": "30g"
+        }
+      ],
+      "steps": [
+        "Slice peeled lotus root into very thin 2mm rounds. Soak in water for 10 minutes to remove excess starch.",
+        "Drain thoroughly and pat completely dry with paper towels.",
+        "Toss the slices in a bowl with cornstarch until lightly coated.",
+        "Heat oil in a deep pan to 350°F/175°C. Fry slices in small batches for 3-5 minutes until golden and crisp.",
+        "Remove with a slotted spoon and drain on wire racks.",
+        "While still hot, sprinkle with the mixture of five-spice, salt, and white pepper.",
+        "Ensure all pieces are evenly seasoned.",
+        "Divide into six portions and serve immediately."
+      ],
+      "allergens": "None",
+      "note": "Lotus root is in peak season during autumn.",
+      "storage": "Store in an airtight container at room temperature for up to 2 days; crisp in a 300°F/150°C oven if needed.",
+      "photoSearch": "Lotus root chips"
+    },
+    {
+      "cuisine": "Taiwanese",
+      "meal": "Main",
+      "title": "Taiwanese Oyster Omelet Style Egg Scramble",
+      "serves": 6,
+      "prep": 20,
+      "cook": 15,
+      "ingredients": [
+        {
+          "name": "Fresh oysters, shucked",
+          "amount": "600g"
+        },
+        {
+          "name": "Eggs",
+          "amount": "12 count"
+        },
+        {
+          "name": "Sweet potato starch",
+          "amount": "60g"
+        },
+        {
+          "name": "Water",
+          "amount": "150mL"
+        },
+        {
+          "name": "Baby bok choy, chopped",
+          "amount": "200g"
+        },
+        {
+          "name": "Neutral oil",
+          "amount": "60mL"
+        },
+        {
+          "name": "Sweet chili sauce",
+          "amount": "100g"
+        },
+        {
+          "name": "Scallions, sliced",
+          "amount": "40g"
+        }
+      ],
+      "steps": [
+        "Rinse oysters gently in salted water and pat dry. Mix sweet potato starch with water to create a slurry.",
+        "Whisk eggs in a large bowl. Stir in the starch slurry and half the scallions.",
+        "Heat 10mL oil in a non-stick pan over medium-high heat. Sear a portion of oysters for 1 minute.",
+        "Pour one-sixth of the egg mixture over the oysters. Scatter a handful of bok choy on top.",
+        "Cook until the eggs are mostly set but still slightly soft in the center, about 3 minutes.",
+        "Flip carefully and cook for another minute until the internal temperature of the oysters reaches 145°F/63°C.",
+        "Repeat for all six portions.",
+        "Serve hot with a drizzle of sweet chili sauce."
+      ],
+      "allergens": "Shellfish, Eggs",
+      "note": "Sweet potato starch is essential for the authentic chewy texture.",
+      "storage": "Refrigerate in an airtight container within 2 hours; consume within 2 days. Reheat to 165°F/74°C.",
+      "photoSearch": "Oyster omelet"
+    },
+    {
+      "cuisine": "Taiwanese",
+      "meal": "Snack",
+      "title": "Brown Sugar Ginger Mochi Balls",
+      "serves": 6,
+      "prep": 15,
+      "cook": 20,
+      "ingredients": [
+        {
+          "name": "Glutinous rice flour",
+          "amount": "300g"
+        },
+        {
+          "name": "Warm water",
+          "amount": "220mL"
+        },
+        {
+          "name": "Brown sugar",
+          "amount": "100g"
+        },
+        {
+          "name": "Fresh ginger, grated",
+          "amount": "20g"
+        },
+        {
+          "name": "Water for syrup",
+          "amount": "200mL"
+        },
+        {
+          "name": "Toasted peanuts, crushed",
+          "amount": "50g"
+        }
+      ],
+      "steps": [
+        "Combine glutinous rice flour and warm water in a bowl. Knead until a smooth, pliable dough forms.",
+        "Divide dough into 18 equal small balls (3 per person).",
+        "Bring a large pot of water to a boil. Drop balls in and cook until they float, about 4-5 minutes.",
+        "In a separate small saucepan, simmer 200mL water, brown sugar, and ginger until reduced to a light syrup.",
+        "Drain the mochi balls and transfer them to a serving platter.",
+        "Pour the warm ginger syrup over the mochi balls.",
+        "Sprinkle with crushed peanuts.",
+        "Serve six portions immediately."
+      ],
+      "allergens": "Peanuts",
+      "note": "Serve warm as a traditional dessert snack.",
+      "storage": "Best eaten fresh. If stored, keep in syrup in the refrigerator for 1 day; warm gently in a microwave.",
+      "photoSearch": "Tangyuan"
+    },
+    {
+      "cuisine": "Hong Kong",
+      "meal": "Main",
+      "title": "Steamed Ginger Soy Cod",
+      "serves": 6,
+      "prep": 15,
+      "cook": 12,
+      "ingredients": [
+        {
+          "name": "Cod fillets",
+          "amount": "900g"
+        },
+        {
+          "name": "Fresh ginger, julienned",
+          "amount": "40g"
+        },
+        {
+          "name": "Scallions, sliced",
+          "amount": "50g"
+        },
+        {
+          "name": "Light soy sauce",
+          "amount": "60mL"
+        },
+        {
+          "name": "Neutral oil",
+          "amount": "45mL"
+        },
+        {
+          "name": "Sugar",
+          "amount": "10g"
+        },
+        {
+          "name": "Water",
+          "amount": "30mL"
+        },
+        {
+          "name": "Cilantro",
+          "amount": "20g"
+        }
+      ],
+      "steps": [
+        "Prepare a steamer setup by bringing a large pot of water to a boil.",
+        "Pat the cod fillets dry and place them on a heat-proof plate that fits inside your steamer.",
+        "Top the fish evenly with half of the ginger and half of the scallions.",
+        "Place the plate in the steamer, cover tightly, and steam for 8-10 minutes or until the fish reaches 145°F / 63°C.",
+        "In a small saucepan, combine soy sauce, sugar, and water; simmer until sugar dissolves.",
+        "Remove fish from steamer, discard the excess liquid on the plate, and top with the remaining ginger and scallions.",
+        "Heat the neutral oil in a small pan until smoking hot, then pour it over the fish to release the aroma.",
+        "Drizzle with the warm soy sauce mixture and garnish with cilantro before serving."
+      ],
+      "allergens": "Fish, Soy",
+      "note": "Use fresh, firm-fleshed white fish for the best texture.",
+      "storage": "Refrigerate in an airtight container within 2 hours; consume within 2 days. Reheat to 165°F/74°C.",
+      "photoSearch": "Steamed fish with soy sauce"
+    },
+    {
+      "cuisine": "Hong Kong",
+      "meal": "Snack",
+      "title": "Curry Fish Balls",
+      "serves": 6,
+      "prep": 10,
+      "cook": 15,
+      "ingredients": [
+        {
+          "name": "Frozen fried fish balls",
+          "amount": "600g"
+        },
+        {
+          "name": "Curry powder",
+          "amount": "15g"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "5g"
+        },
+        {
+          "name": "Coconut milk",
+          "amount": "200mL"
+        },
+        {
+          "name": "Neutral oil",
+          "amount": "15mL"
+        },
+        {
+          "name": "Garlic, minced",
+          "amount": "10g"
+        },
+        {
+          "name": "Water",
+          "amount": "100mL"
+        },
+        {
+          "name": "Salt",
+          "amount": "2g"
+        }
+      ],
+      "steps": [
+        "Heat oil in a wok or deep skillet over medium heat; add minced garlic and fry until fragrant.",
+        "Stir in curry powder and turmeric, cooking for 30 seconds to toast the spices.",
+        "Pour in coconut milk and water, stirring well to combine.",
+        "Add the frozen fish balls to the liquid and bring to a gentle simmer.",
+        "Cover and cook for 10-12 minutes, stirring occasionally, until the sauce thickens and coats the fish balls.",
+        "Season with salt to taste.",
+        "Divide into six bowls and serve warm on skewers or with small forks."
+      ],
+      "allergens": "Fish, Coconut",
+      "note": "Traditional Hong Kong street food style snack.",
+      "storage": "Store in refrigerator for up to 3 days. Reheat thoroughly to 165°F/74°C.",
+      "photoSearch": "Curry fish balls"
+    },
+    {
+      "cuisine": "Korean",
+      "meal": "Main",
+      "title": "Spicy Braised Tofu and Pork",
+      "serves": 6,
+      "prep": 20,
+      "cook": 25,
+      "ingredients": [
+        {
+          "name": "Ground pork",
+          "amount": "450g"
+        },
+        {
+          "name": "Firm tofu, sliced",
+          "amount": "600g"
+        },
+        {
+          "name": "Gochujang",
+          "amount": "45g"
+        },
+        {
+          "name": "Soy sauce",
+          "amount": "40mL"
+        },
+        {
+          "name": "Garlic, minced",
+          "amount": "15g"
+        },
+        {
+          "name": "Sesame oil",
+          "amount": "15mL"
+        },
+        {
+          "name": "Onion, chopped",
+          "amount": "150g"
+        },
+        {
+          "name": "Water",
+          "amount": "250mL"
+        },
+        {
+          "name": "Scallions, sliced",
+          "amount": "30g"
+        }
+      ],
+      "steps": [
+        "In a large skillet, brown the ground pork over medium-high heat until it reaches 160°F / 71°C.",
+        "Add the onion and cook for 3 minutes until softened.",
+        "Whisk together gochujang, soy sauce, garlic, and sesame oil with the water.",
+        "Arrange the tofu slices on top of the cooked pork in the skillet.",
+        "Pour the sauce mixture over the tofu and pork.",
+        "Cover and simmer on medium-low heat for 12-15 minutes, allowing the tofu to absorb the sauce.",
+        "Remove the lid, sprinkle with scallions, and simmer for another 2 minutes to reduce the liquid slightly.",
+        "Serve hot with steamed rice."
+      ],
+      "allergens": "Soy",
+      "note": "A hearty, comforting dish common in Korean home cooking.",
+      "storage": "Refrigerate in an airtight container for up to 3 days. Reheat to 165°F/74°C.",
+      "photoSearch": "Braised tofu with pork"
+    },
+    {
+      "cuisine": "Korean",
+      "meal": "Snack",
+      "title": "Sweet Potato Pancakes",
+      "serves": 6,
+      "prep": 15,
+      "cook": 20,
+      "ingredients": [
+        {
+          "name": "Sweet potatoes, grated",
+          "amount": "500g"
+        },
+        {
+          "name": "All-purpose flour",
+          "amount": "150g"
+        },
+        {
+          "name": "Water",
+          "amount": "100mL"
+        },
+        {
+          "name": "Sugar",
+          "amount": "20g"
+        },
+        {
+          "name": "Neutral oil",
+          "amount": "40mL"
+        },
+        {
+          "name": "Salt",
+          "amount": "3g"
+        },
+        {
+          "name": "Honey",
+          "amount": "20mL"
+        }
+      ],
+      "steps": [
+        "In a large bowl, combine the grated sweet potatoes, flour, sugar, and salt.",
+        "Gradually stir in the water until a thick, uniform batter forms.",
+        "Heat 20mL of oil in a large nonstick pan over medium heat.",
+        "Drop 1/4 cup portions of the batter into the pan, flattening them slightly with a spatula.",
+        "Cook for 4-5 minutes per side until deeply golden and crispy.",
+        "Remove and drain briefly on a paper towel.",
+        "Repeat with remaining batter, adding more oil as needed.",
+        "Serve warm drizzled with honey."
+      ],
+      "allergens": "Wheat",
+      "note": "A popular sweet snack using seasonal autumn sweet potatoes.",
+      "storage": "Refrigerate for up to 2 days; reheat in a pan or toaster oven to regain crispness.",
+      "photoSearch": "Korean sweet potato pancake"
+    },
+    {
+      "cuisine": "Indian",
+      "meal": "Main",
+      "title": "Spiced Cauliflower and Potato Curry",
+      "serves": 6,
+      "prep": 20,
+      "cook": 30,
+      "ingredients": [
+        {
+          "name": "Cauliflower florets",
+          "amount": "900g"
+        },
+        {
+          "name": "Potatoes, peeled and 2cm cubes",
+          "amount": "600g"
+        },
+        {
+          "name": "Onion, finely diced",
+          "amount": "300g"
+        },
+        {
+          "name": "Tomatoes, chopped",
+          "amount": "400g"
+        },
+        {
+          "name": "Neutral oil",
+          "amount": "45mL"
+        },
+        {
+          "name": "Cumin seeds",
+          "amount": "10g"
+        },
+        {
+          "name": "Turmeric powder",
+          "amount": "5g"
+        },
+        {
+          "name": "Ground coriander",
+          "amount": "10g"
+        },
+        {
+          "name": "Chili powder",
+          "amount": "3g"
+        },
+        {
+          "name": "Fresh ginger, grated",
+          "amount": "20g"
+        },
+        {
+          "name": "Garlic, minced",
+          "amount": "15g"
+        },
+        {
+          "name": "Water",
+          "amount": "250mL"
+        },
+        {
+          "name": "Fresh cilantro, chopped",
+          "amount": "30g"
+        },
+        {
+          "name": "Salt",
+          "amount": "12g"
+        }
+      ],
+      "steps": [
+        "Heat oil in a large heavy-bottomed pan over medium heat. Add cumin seeds and cook for 30 seconds until fragrant.",
+        "Add onion and cook for 8 minutes until translucent. Stir in ginger and garlic, cooking for 1 minute.",
+        "Add turmeric, coriander, chili powder, and salt. Cook for 30 seconds, then add tomatoes.",
+        "Simmer tomatoes for 5 minutes until they break down into a thick paste.",
+        "Add cauliflower and potatoes to the pan, stirring to coat with the spice mixture.",
+        "Pour in water, cover tightly, and simmer over medium-low heat for 15-20 minutes until vegetables are tender.",
+        "Remove lid and cook for another 3-5 minutes to evaporate excess liquid if necessary.",
+        "Stir in fresh cilantro and divide into six bowls."
+      ],
+      "allergens": "None",
+      "note": "Serve with basmati rice or flatbread.",
+      "storage": "Keep in an airtight container in the refrigerator for up to 3 days. Reheat to 165°F/74°C.",
+      "photoSearch": "Aloo Gobi"
+    },
+    {
+      "cuisine": "Indian",
+      "meal": "Snack",
+      "title": "Spiced Roasted Chickpeas",
+      "serves": 6,
+      "prep": 5,
+      "cook": 40,
+      "ingredients": [
+        {
+          "name": "Canned chickpeas, drained and patted dry",
+          "amount": "800g"
+        },
+        {
+          "name": "Olive oil",
+          "amount": "30mL"
+        },
+        {
+          "name": "Garam masala",
+          "amount": "8g"
+        },
+        {
+          "name": "Smoked paprika",
+          "amount": "5g"
+        },
+        {
+          "name": "Salt",
+          "amount": "5g"
+        },
+        {
+          "name": "Black pepper",
+          "amount": "2g"
+        }
+      ],
+      "steps": [
+        "Preheat the oven to 400°F / 200°C.",
+        "Ensure chickpeas are very dry by patting them with a paper towel; moisture prevents crispiness.",
+        "In a large bowl, toss the chickpeas with olive oil until evenly coated.",
+        "Spread chickpeas in a single layer on a large rimmed baking sheet.",
+        "Roast for 35-40 minutes, shaking the tray every 10 minutes, until chickpeas are golden and crunchy.",
+        "Remove from oven and immediately toss with garam masala, paprika, salt, and pepper while still hot.",
+        "Let cool for 10 minutes to finish crisping.",
+        "Divide into six small bowls."
+      ],
+      "allergens": "None",
+      "note": "Best eaten the same day for maximum crunch.",
+      "storage": "Store in an airtight container at room temperature for up to 2 days.",
+      "photoSearch": "Roasted chickpeas"
+    },
+    {
+      "cuisine": "Seasonal",
+      "meal": "Main",
+      "title": "Autumn Harvest Pumpkin Risotto",
+      "serves": 6,
+      "prep": 15,
+      "cook": 40,
+      "ingredients": [
+        {
+          "name": "Arborio rice",
+          "amount": "400g"
+        },
+        {
+          "name": "Pumpkin puree (cooked, mashed)",
+          "amount": "500g"
+        },
+        {
+          "name": "Vegetable broth, hot",
+          "amount": "1500mL"
+        },
+        {
+          "name": "Onion, finely chopped",
+          "amount": "150g"
+        },
+        {
+          "name": "Garlic, minced",
+          "amount": "10g"
+        },
+        {
+          "name": "Butter",
+          "amount": "40g"
+        },
+        {
+          "name": "Parmesan cheese, grated",
+          "amount": "60g"
+        },
+        {
+          "name": "Fresh sage, chopped",
+          "amount": "5g"
+        },
+        {
+          "name": "Olive oil",
+          "amount": "15mL"
+        },
+        {
+          "name": "Salt",
+          "amount": "8g"
+        }
+      ],
+      "steps": [
+        "Heat vegetable broth in a pot and keep at a low simmer.",
+        "In a large wide pan, heat olive oil and 20g of butter over medium heat. Sauté onion until soft, about 5 minutes.",
+        "Add rice and toast for 2 minutes, stirring constantly until edges are translucent.",
+        "Add 250mL of hot broth, stirring until absorbed. Continue adding broth in 250mL increments, stirring frequently, until rice is creamy but al dente (approx 20-25 minutes).",
+        "Fold in the pumpkin puree and cook for 3 minutes to heat through.",
+        "Remove from heat. Stir in the remaining butter, Parmesan, salt, and sage.",
+        "Check that the risotto is creamy; add a splash of extra broth if needed.",
+        "Divide into six warm bowls."
+      ],
+      "allergens": "Milk",
+      "note": "Use fresh pumpkin if available, roasted and mashed.",
+      "storage": "Refrigerate in an airtight container for up to 3 days. Reheat to 165°F/74°C with a little water.",
+      "photoSearch": "Pumpkin risotto"
+    },
+    {
+      "cuisine": "Seasonal",
+      "meal": "Snack",
+      "title": "Roasted Apple and Walnut Medley",
+      "serves": 6,
+      "prep": 10,
+      "cook": 25,
+      "ingredients": [
+        {
+          "name": "Crisp apples, cored and 2cm cubes",
+          "amount": "900g"
+        },
+        {
+          "name": "Walnuts, chopped",
+          "amount": "100g"
+        },
+        {
+          "name": "Maple syrup",
+          "amount": "30mL"
+        },
+        {
+          "name": "Ground cinnamon",
+          "amount": "5g"
+        },
+        {
+          "name": "Butter, melted",
+          "amount": "20g"
+        }
+      ],
+      "steps": [
+        "Preheat the oven to 375°F / 190°C.",
+        "Toss the cubed apples with melted butter, maple syrup, and cinnamon in a large mixing bowl.",
+        "Spread apples in a single layer on a parchment-lined baking tray.",
+        "Roast for 20 minutes until apples are soft but not mushy.",
+        "Add walnuts to the tray and toss gently with the apples.",
+        "Roast for another 5 minutes until walnuts are toasted and fragrant.",
+        "Remove from oven and let cool slightly.",
+        "Divide into six small bowls and serve warm."
+      ],
+      "allergens": "Tree nuts (walnuts), Milk",
+      "note": "Suitable for a crisp autumn afternoon snack.",
+      "storage": "Store in the refrigerator for up to 2 days; reheat in a pan or microwave.",
+      "photoSearch": "Roasted apples"
     }
   ],
   "generation": {
     "textModel": "gemini-3.1-flash-lite",
     "kind": "new-daily-recipes"
-  }
+  },
+  "editorialApproved": true
 }
