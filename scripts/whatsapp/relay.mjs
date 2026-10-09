@@ -1,4 +1,4 @@
-import makeWASocket,{useMultiFileAuthState} from '@whiskeysockets/baileys';
+import makeWASocket,{useMultiFileAuthState,Browsers} from '@whiskeysockets/baileys';
 import pino from 'pino';import QRCode from 'qrcode';import http from 'node:http';
 import {mkdtemp,readFile,writeFile,readdir,rm,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';import {join,resolve} from 'node:path';
@@ -12,7 +12,7 @@ function unseal(text){const b=Buffer.from(text,'base64'),d=createDecipheriv('aes
 async function get(name){const r=await api('wa-state-get',{name});return r.encrypted?unseal(r.encrypted):null}
 async function put(name,value){await api('wa-state-put',{name,encrypted:seal(value)})}
 const folder=await mkdtemp(join(tmpdir(),'realfamily-wa-'));const previous=await get('auth');
-if(previous)for(const [file,content] of Object.entries(previous)){if(!/^[\w.-]+\.json$/.test(file))throw Error('Invalid session file');await writeFile(join(folder,file),content,{mode:0o600})}
+if(previous)for(const [file,content] of Object.entries(previous)){if(!/^[\w.@-]+\.json$/.test(file)||typeof content!=='string')throw Error('Invalid session file');JSON.parse(content);await writeFile(join(folder,file),content,{mode:0o600})}
 if(!pairing&&!previous)throw Error('WhatsApp needs phone linking');
 const {state,saveCreds}=await useMultiFileAuthState(folder);let saveChain=Promise.resolve();
 async function save(){const files={};for(const file of await readdir(folder))if(file.endsWith('.json'))files[file]=await readFile(join(folder,file),'utf8');await put('auth',files)}
@@ -28,7 +28,8 @@ async function complete(){
  if(pairing){
   const routing=JSON.parse(await readFile(join(root,'data/whatsapp-routing.private.json'),'utf8'));
   const groups=Object.values(await socket.groupFetchAllParticipating());
-  const routes=routing.routes.map(route=>{const matches=groups.filter(g=>g.subject===route.groupName);if(matches.length!==1)throw Error('A destination is missing or ambiguous');return {...route,jid:matches[0].id}});
+  await writeFile('/tmp/realfamily-whatsapp-private/group-check.json',JSON.stringify(routing.routes.map(route=>({category:route.category,expected:route.groupName,matches:groups.filter(g=>g.subject===route.groupName).length,similar:groups.filter(g=>g.subject.toLowerCase().includes(route.groupName.split('@')[0].toLowerCase())).map(g=>({name:g.subject,jid:g.id,participants:g.participants.length,created:g.creation}))}))),{mode:0o600});
+  const routes=routing.routes.map(route=>{const matches=groups.filter(g=>g.subject===route.groupName&&(!route.jid||g.id===route.jid));if(matches.length!==1)throw Error('A destination is missing or ambiguous');return {...route,jid:matches[0].id}});
   await put('routes',routes);await scheduleSave();
   // Desktop deliveries are verified locally. Reserve their original IDs so a cloud
   // cutover cannot repeat today's already-delivered cards; do not invent server IDs.
@@ -52,7 +53,7 @@ async function complete(){
  console.log('Daily relay finished; stored message IDs indicate server acceptance, not recipient read status.');
 }
 function connect(){
- socket=makeWASocket({auth:state,logger:pino({level:'silent'}),syncFullHistory:false,shouldSyncHistoryMessage:()=>false,markOnlineOnConnect:false,browser:['Real Family','Chrome','1.0']});
+ socket=makeWASocket({auth:state,logger:pino({level:'silent'}),syncFullHistory:false,shouldSyncHistoryMessage:()=>false,markOnlineOnConnect:false,browser:Browsers.macOS('Chrome'),qrTimeout:120000});
  socket.ev.on('creds.update',async()=>{try{await saveCreds();await scheduleSave()}catch{console.error('Session persistence failed');process.exit(1)}});
  socket.ev.on('connection.update',async update=>{
   if(update.qr&&pairing){qr=update.qr;status='Scan this code with your phone. Never share this screen.';await QRCode.toFile('/tmp/realfamily-whatsapp-private/link-device.png',qr,{width:480,margin:4});const {chmod}=await import('node:fs/promises');await chmod('/tmp/realfamily-whatsapp-private/link-device.png',0o600);console.log('Private phone-linking image refreshed.')}
