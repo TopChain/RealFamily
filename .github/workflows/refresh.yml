@@ -23,6 +23,6 @@ jobs:
         run: |
           git config user.name 'Real Family updater'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data/latest.json data/research-archive.json data/english-history.json data/english-archive data/english-staged data/daily-history.json data/health-archive data/recipes-archive
+          git add data/latest.json data/research-archive.json data/english-history.json data/english-archive data/english-staged data/daily-history.json data/health-archive data/recipes-archive data/recipes-staged
           git diff --cached --quiet || git commit -m 'Refresh verified public sources'
           git push

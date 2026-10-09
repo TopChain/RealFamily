@@ -1,4 +1,4 @@
-name: Free-tier daily English and simple comics
+name: Free-tier daily English and twenty kitchen recipes
 on:
   schedule:
     # Prepare tomorrow at 9 PM PT; alternate offset is an idempotent check.
@@ -18,7 +18,7 @@ jobs:
   prepare:
     if: vars.GEMINI_FREE_TIER_PROJECT == 'gen-lang-client-0709553800' && vars.GEMINI_GENERATION_MODE == 'free_only' && vars.GEMINI_PAID_GENERATION_ENABLED == 'false'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_GENERATION_MODE: ${{ vars.GEMINI_GENERATION_MODE }}
@@ -47,14 +47,18 @@ jobs:
         run: python scripts/generate_english.py --check-api
       - name: Prepare complete editions without overwriting existing dates
         run: python scripts/generate_english.py
+      - name: Prepare twenty new kitchen recipes with licensed photos
+        if: success() || failure()
+        run: python scripts/generate_kitchen.py
       - name: Preserve completed work and checkpoints
         if: always()
         run: |
           git config user.name 'Real Family curriculum'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data/english-staged data/english-images assets/english
+          mkdir -p data/recipes-staged data/recipe-drafts
+          git add data/english-staged data/english-images assets/english data/recipes-staged data/recipe-drafts
           if [ -d data/english-drafts ]; then git add data/english-drafts; fi
           if [ -f data/english-generation-status.json ]; then git add data/english-generation-status.json; fi
-          git diff --cached --quiet || git commit -m 'Prepare dated English curriculum and topic comics'
+          git diff --cached --quiet || git commit -m 'Prepare dated English and twenty new kitchen recipes'
           git pull --rebase origin main
           git push
