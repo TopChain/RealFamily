@@ -8,7 +8,7 @@ The website's GitHub schedules run without this computer. The complete system is
 | --- | --- | --- |
 | News and market feeds | Cloud schedule exists; refresh rules select three-hour PT slots | Monitor scheduled runs; GitHub schedules can be delayed |
 | Health research and date archives | Cloud daily refresh exists | Continue preserving original sources and dates |
-| Kitchen generation and date archives | Cloud preparation: 20 new six-serving recipes per day, one main and one snack for each of ten cuisine themes; immutable midnight release | First full twenty-recipe generation/review/photo run is being verified |
+| Kitchen generation and date archives | Cloud preparation: 20 new six-serving recipes per day, one main and one snack for each of ten cuisine themes; immutable midnight release | October 9 edition: twenty new recipes generated, corrected, photographed and staged; midnight release verified in tests |
 | English generation and release | Free-tier text pipeline and approved program-drawn comics prepared; complete editions release on their PT date | Cloud text call and portable layout verified; first newly authored scheduled edition still to be observed |
 | Subscription emails | Cloud relay enabled; sender, scopes and private queue verified | Observe real queued mail delivery; current queue was empty |
 | Fixed ten-card email delivery | Canceled by the owner | Send email only for valid confirmed subscriptions; no fixed mailbox delivery or catch-up |
@@ -16,7 +16,7 @@ The website's GitHub schedules run without this computer. The complete system is
 
 ## Gemini
 
-Gemini can supply lesson text and topic-specific simple comic illustrations. A Gemini website/App subscription is different from the Developer API. Choose models and approve an API budget before activating paid generation. No paid AI generation has been enabled. On 2026-10-08 PT the owner approved simple program-drawn comics. The account’s Default Gemini Project showed Free tier with Gemini 3.1 Flash Lite limits of 15 RPM, 250K TPM and 500 RPD; native image models had zero quota. English generation uses two bounded text requests per new date, no image API, no paid fallback, and persists failure checkpoints. Kitchen preparation uses five four-recipe batches plus one editorial review per date. Successful batches are retained; a service failure pauses generation until the free tier and quota are checked. There is no paid fallback.
+Gemini can supply lesson text and topic-specific simple comic illustrations. A Gemini website/App subscription is different from the Developer API. Choose models and approve an API budget before activating paid generation. No paid AI generation has been enabled. On 2026-10-08 PT the owner approved simple program-drawn comics. The account’s Default Gemini Project showed Free tier with Gemini 3.1 Flash Lite limits of 15 RPM, 250K TPM and 500 RPD; native image models had zero quota. English generation uses two bounded text requests per new date, no image API, no paid fallback, and persists failure checkpoints. Kitchen preparation uses five four-recipe batches plus one editorial review per date, with small editorial corrections applied before validation. Cloud run 37889124391 succeeded with the complete twenty-recipe edition preserved. Successful batches are retained; a service failure pauses generation until the free tier and quota are checked. There is no paid fallback.
 
 ## Cloud Gmail relay
 

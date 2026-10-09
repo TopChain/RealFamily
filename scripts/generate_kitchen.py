@@ -7,8 +7,15 @@ def photo_search(query,title):
     params={'action':'query','format':'json','generator':'search','gsrsearch':query,'gsrnamespace':6,'gsrlimit':8,'prop':'imageinfo','iiprop':'url|size|mime|extmetadata','iiurlwidth':960}
     request=urllib.request.Request('https://commons.wikimedia.org/w/api.php?'+urllib.parse.urlencode(params),headers={'User-Agent':'RealFamily/1.0 (https://www.topchainfresh.com/realfamily/; educational recipe photo attribution)'})
     with urllib.request.urlopen(request,timeout=40) as response:data=json.load(response)
-    for page in sorted(data.get('query',{}).get('pages',{}).values(),key=lambda p:p.get('index',999)):
+    def score(page):
+        title=re.sub(r'[^a-z0-9 ]',' ',page.get('title','').lower().replace('_',' '))
+        words=set(query.lower().split());tokens=title.split()
+        return (1.5 if query.lower() in title else 0)+len(words.intersection(tokens))/(len(tokens)+4)
+    for page in sorted(data.get('query',{}).get('pages',{}).values(),key=score,reverse=True):
         info=page.get('imageinfo',[{}])[0];meta=info.get('extmetadata',{})
+        filename=page.get('title','').lower()
+        unwanted=('illustration','botanical','diagram','flower','logo','intestine','soup','kingfish')
+        if any(word in filename and word not in query.lower() for word in unwanted):continue
         clean=lambda field:html.unescape(re.sub('<[^>]+>',' ',meta.get(field,{}).get('value',''))).strip()
         license=clean('LicenseShortName');license_url=clean('LicenseUrl')
         if not (license.startswith(('CC BY','CC0')) or license in ('Public domain','PD')):continue
