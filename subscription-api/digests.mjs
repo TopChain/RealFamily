@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import {digestDue} from './mail-schedule.mjs';
 import {TOPICS,escape} from './core.mjs';
 import {esc,https,a,eyebrow,note,card,button,title,p,designedEmail} from './email-design.mjs';
 const home='https://www.topchainfresh.com/realfamily/';
@@ -46,6 +47,7 @@ export function digestContent(data,topics,date,options={}){
  return designedEmail({date,title:selected.length===1?headlines[selected[0]]:'Good things, all in one place.',kicker:selected.length===1?TOPICS[selected[0]]:'YOUR DAILY FAMILY DIGEST',body:sections.join(''),unsubscribe:options.unsubscribe,preview:options.preview});
 }
 export async function queueDigests(pool,data,now=new Date()){
+ if(!digestDue(now))return 0;
  const date=pacificDay(now);const client=await pool.connect();let count=0;
  try{
   await client.query('BEGIN');await client.query("SELECT pg_advisory_xact_lock(hashtext('realfamily-digest'))");

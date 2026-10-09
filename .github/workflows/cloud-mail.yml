@@ -2,6 +2,8 @@ name: Cloud subscription mail relay
 on:
   schedule:
     - cron: '17 * * * *'
+    # Pacific daylight/standard offsets; the server gates digests until 7:30 AM PT.
+    - cron: '30 14,15 * * *'
   workflow_dispatch:
 permissions:
   contents: read

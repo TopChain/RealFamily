@@ -1,5 +1,6 @@
 import {randomBytes,createHash,timingSafeEqual} from 'node:crypto';
 import {designedEmail,p,button,note} from './email-design.mjs';
+import {digestDue} from './mail-schedule.mjs';
 export const TOPICS={news:'World & AI news',markets:'Global markets',health:'Healthy living',recipes:'Family kitchen',english:'Everyday English'};
 export const hash=s=>createHash('sha256').update(s).digest('hex');
 export const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -32,6 +33,7 @@ export function createService(pool,env){
  if(action.startsWith('mail-')){
   if(!isAdmin(request))return json({error:'Unauthorized'},401);
   if(action==='mail-digests'&&request.method==='POST'){
+   if(!digestDue())return json({queued:0,deferred:true});
    const response=await fetch('https://www.topchainfresh.com/realfamily/data/latest.json',{signal:AbortSignal.timeout(15000)});if(!response.ok)return json({error:'Website data unavailable'},503);
    const {queueDigests}=await import('./digests.mjs');const data=await response.json();const day=new Date().toLocaleDateString('en-CA',{timeZone:'America/Los_Angeles'});const recipes=await fetch('https://www.topchainfresh.com/realfamily/data/recipes-archive/'+day+'.json',{signal:AbortSignal.timeout(15000)});if(!recipes.ok)return json({error:'Daily recipe archive unavailable'},503);data.familyRecipes=(await recipes.json()).recipes;return json({queued:await queueDigests(pool,data)});
   }
@@ -39,10 +41,10 @@ export function createService(pool,env){
    const lease=randomBytes(24).toString('hex');
    // Stale leases become uncertain; the relay searches Sent before any retry.
    await pool.query("UPDATE realfamily.mail_outbox SET status='uncertain' WHERE status='sending' AND lease_at<now()-interval '15 minutes'");
-   const {rows}=await pool.query(`WITH next AS (SELECT id,status AS prior_status FROM realfamily.mail_outbox WHERE status IN ('pending','uncertain') AND (kind='confirmation' AND created_at>now()-interval '48 hours' OR kind='digest' AND EXISTS(SELECT 1 FROM realfamily.subscribers s WHERE s.email=recipient AND s.active)) ORDER BY id FOR UPDATE SKIP LOCKED LIMIT 10) UPDATE realfamily.mail_outbox o SET status='sending',lease_id=$1,lease_at=now() FROM next WHERE o.id=next.id RETURNING o.id,o.recipient,o.subject,o.html,o.dedupe_key,next.prior_status`,[lease]);return json({lease,jobs:rows});
+   const {rows}=await pool.query(`WITH next AS (SELECT id,status AS prior_status FROM realfamily.mail_outbox WHERE status IN ('pending','uncertain') AND (kind='confirmation' AND created_at>now()-interval '48 hours' OR kind='digest' AND $2::boolean AND EXISTS(SELECT 1 FROM realfamily.subscribers s WHERE s.email=recipient AND s.active)) ORDER BY id FOR UPDATE SKIP LOCKED LIMIT 10) UPDATE realfamily.mail_outbox o SET status='sending',lease_id=$1,lease_at=now() FROM next WHERE o.id=next.id RETURNING o.id,o.recipient,o.subject,o.html,o.dedupe_key,next.prior_status`,[lease,digestDue()]);return json({lease,jobs:rows});
   }
   if(action==='mail-check'&&request.method==='POST'){
-   const body=await request.json();const {rows}=await pool.query(`SELECT EXISTS(SELECT 1 FROM realfamily.mail_outbox o WHERE o.id=$1 AND o.lease_id=$2 AND o.status='sending' AND (o.kind='confirmation' AND o.created_at>now()-interval '48 hours' OR o.kind='digest' AND EXISTS(SELECT 1 FROM realfamily.subscribers s WHERE s.email=o.recipient AND s.active))) AS allowed`,[body.id,body.lease]);return json({allowed:rows[0].allowed});
+   const body=await request.json();const {rows}=await pool.query(`SELECT EXISTS(SELECT 1 FROM realfamily.mail_outbox o WHERE o.id=$1 AND o.lease_id=$2 AND o.status='sending' AND (o.kind='confirmation' AND o.created_at>now()-interval '48 hours' OR o.kind='digest' AND $3::boolean AND EXISTS(SELECT 1 FROM realfamily.subscribers s WHERE s.email=o.recipient AND s.active))) AS allowed`,[body.id,body.lease,digestDue()]);return json({allowed:rows[0].allowed});
   }
   if(action==='mail-result'&&request.method==='POST'){
    const body=await request.json();if(!['sent','pending','uncertain'].includes(body.status)||body.status==='sent'&&!body.messageId)return json({error:'Invalid result'},400);

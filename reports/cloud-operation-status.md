@@ -11,7 +11,7 @@ The website's GitHub schedules run without this computer. The complete system is
 | Kitchen date archives | Cloud daily snapshots and curated recipe rotation | New recipes are not automatically invented every day |
 | English release | Complete staged editions release on their PT date | Continuous new content and unique illustrations require an AI API |
 | Subscription emails | Cloud relay enabled; sender, scopes and private queue verified | Observe real queued mail delivery; current queue was empty |
-| Ten daily PNG email attachments | Existing local authorized delivery | Extend cloud durable queue for attachments and seed prior deliveries before activation |
+| Fixed ten-card email delivery | Canceled by the owner | Send email only for valid confirmed subscriptions; no fixed mailbox delivery or catch-up |
 | Seven existing WhatsApp groups | Encrypted linked-device relay enabled; GitHub restored the session and verified all seven groups | First new-card cloud delivery is still to be observed; schedules can be delayed and device relinking may be needed |
 
 ## Gemini
@@ -20,18 +20,18 @@ Gemini can supply lesson text and topic-specific simple comic illustrations. A G
 
 ## Cloud Gmail relay
 
-The source repository contains the enabled `.github/workflows/cloud-mail.yml`. It checks every hour. Required private GitHub secrets are configured: GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN, MAILER_SECRET. The public endpoint is not a secret. Credentials must never be placed in source code or public reports.
+The source repository contains the enabled `.github/workflows/cloud-mail.yml`. It checks hourly for confirmations and retries, with additional 7:30 AM PT runs. The API prevents digest creation, claiming and sending before 7:30 AM PT; daylight-saving changes are handled automatically. GitHub schedules may be delayed. Required private GitHub secrets are configured: GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN, MAILER_SECRET. The public endpoint is not a secret. Credentials must never be placed in source code or public reports.
 
 The relay refreshes OAuth credentials, verifies the actual sender account, builds the subscription digest queue, claims private Neon jobs, searches Gmail Sent, and checks exact recipient and subject. Before a new send it checks that the subscriber is still active. Confirmed message IDs are recorded in the private queue. Existing sent messages are acknowledged without sending again. Ambiguous sends remain uncertain and require review rather than a blind resend. A cloud failure surfaces in GitHub Actions without printing recipients, email HTML, credentials, or provider responses.
 
-Current implementation sends the existing subscription HTML exactly as designed. It does not yet enqueue or send the separate ten PNG attachments. Existing local delivery remains in place until a verified cloud cutover avoids duplicate writers and sends.
+Current implementation sends the existing subscription HTML exactly as designed. The owner canceled fixed daily ten-PNG delivery on 2026-10-08 PT. No fixed mailbox delivery or catch-up should run. Subscription confirmation and valid confirmed subscriber digests remain enabled.
 
 ## Activation checklist
 
 1. Choose Gemini Developer API account, models, and approved budget; store its key privately.
 2. Implement generation, complete-edition validation, portable card rendering, retry checkpoints, and publishing into both repositories.
 3. Completed: Google OAuth is in production; sender, send/read scopes and offline credentials were verified in cloud.
-4. Add cloud secrets; privately seed past direct deliveries and add attachment jobs before enabling the full ten-card pipeline.
+4. Fixed daily ten-card email was canceled by the owner. Only valid confirmed subscriptions qualify for email delivery.
 5. Completed: owner approved and linked the nonofficial cloud device; encrypted routes use verified group IDs. Observe the first new-card delivery and relink on failure.
 6. Observe an end-to-end scheduled run while local delivery is disabled, then switch the desktop automation to audit/fallback only.
 
