@@ -1,0 +1,38 @@
+name: Cloud subscription mail relay
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: real-family-cloud-mail
+  cancel-in-progress: false
+jobs:
+  relay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+      GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+      GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+      MAILER_SECRET: ${{ secrets.MAILER_SECRET }}
+      SUBSCRIPTION_ENDPOINT: https://real-family-subscriptions.vercel.app/api/subscription
+    steps:
+      - name: Check cloud activation
+        id: readiness
+        run: |
+          if [ -n "$GMAIL_CLIENT_ID" ] && [ -n "$GMAIL_CLIENT_SECRET" ] && [ -n "$GMAIL_REFRESH_TOKEN" ] && [ -n "$MAILER_SECRET" ]; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'Cloud mail is awaiting Google authorization and private secret setup.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.readiness.outputs.ready == 'true'
+      - uses: actions/setup-python@v5
+        if: steps.readiness.outputs.ready == 'true'
+        with:
+          python-version: '3.12'
+      - name: Deliver confirmed subscriptions
+        if: steps.readiness.outputs.ready == 'true'
+        run: python scripts/cloud_mail.py

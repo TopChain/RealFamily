@@ -33,7 +33,10 @@ export function createService(pool,env){
    const lease=randomBytes(24).toString('hex');
    // Stale leases become uncertain; the relay searches Sent before any retry.
    await pool.query("UPDATE realfamily.mail_outbox SET status='uncertain' WHERE status='sending' AND lease_at<now()-interval '15 minutes'");
-   const {rows}=await pool.query(`WITH next AS (SELECT id FROM realfamily.mail_outbox WHERE status IN ('pending','uncertain') AND (kind='confirmation' AND created_at>now()-interval '48 hours' OR kind='digest' AND EXISTS(SELECT 1 FROM realfamily.subscribers s WHERE s.email=recipient AND s.active)) ORDER BY id FOR UPDATE SKIP LOCKED LIMIT 10) UPDATE realfamily.mail_outbox o SET status='sending',lease_id=$1,lease_at=now() FROM next WHERE o.id=next.id RETURNING o.id,o.recipient,o.subject,o.html,o.dedupe_key`,[lease]);return json({lease,jobs:rows});
+   const {rows}=await pool.query(`WITH next AS (SELECT id,status AS prior_status FROM realfamily.mail_outbox WHERE status IN ('pending','uncertain') AND (kind='confirmation' AND created_at>now()-interval '48 hours' OR kind='digest' AND EXISTS(SELECT 1 FROM realfamily.subscribers s WHERE s.email=recipient AND s.active)) ORDER BY id FOR UPDATE SKIP LOCKED LIMIT 10) UPDATE realfamily.mail_outbox o SET status='sending',lease_id=$1,lease_at=now() FROM next WHERE o.id=next.id RETURNING o.id,o.recipient,o.subject,o.html,o.dedupe_key,next.prior_status`,[lease]);return json({lease,jobs:rows});
+  }
+  if(action==='mail-check'&&request.method==='POST'){
+   const body=await request.json();const {rows}=await pool.query(`SELECT EXISTS(SELECT 1 FROM realfamily.mail_outbox o WHERE o.id=$1 AND o.lease_id=$2 AND o.status='sending' AND (o.kind='confirmation' AND o.created_at>now()-interval '48 hours' OR o.kind='digest' AND EXISTS(SELECT 1 FROM realfamily.subscribers s WHERE s.email=o.recipient AND s.active))) AS allowed`,[body.id,body.lease]);return json({allowed:rows[0].allowed});
   }
   if(action==='mail-result'&&request.method==='POST'){
    const body=await request.json();if(!['sent','pending','uncertain'].includes(body.status)||body.status==='sent'&&!body.messageId)return json({error:'Invalid result'},400);
