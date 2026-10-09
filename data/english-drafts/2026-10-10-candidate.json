@@ -1,0 +1,358 @@
+{
+  "lessons": [
+    {
+      "image": {
+        "background": "#eef6f9",
+        "description": "A person pointing at a complex, messy chart on a clipboard, trying to simplify it.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 80,
+            "scale": 1,
+            "shirt": "#4a90e2",
+            "flip": false,
+            "face": "determined",
+            "pose": "point"
+          }
+        ],
+        "props": [
+          {
+            "kind": "clipboard",
+            "x": 350,
+            "y": 100,
+            "scale": 1.2
+          }
+        ]
+      },
+      "level": "B2",
+      "title": "Streamline",
+      "meaning": "To make a process or system simpler and more efficient.",
+      "example": "We need to streamline our reporting process to save time.",
+      "notes": "Use this when focusing on reducing waste or unnecessary steps. It implies removing complexity.",
+      "conversation": "A: Our current workflow is incredibly slow.\nB: I agree, it has too many redundant steps.\nA: Can we streamline the approval process?\nB: Definitely, I will draft a plan by tomorrow.",
+      "exercise": "Rewrite this sentence: 'Make this process faster by removing extra steps.' Model: 'Streamline this process by removing extra steps.'",
+      "scene": "A professional pointing at a clipboard with an overly complex diagram, focused on making it simpler."
+    },
+    {
+      "image": {
+        "background": "#fdf5e6",
+        "description": "A person looking at a lightbulb glowing, showing sudden realization.",
+        "characters": [
+          {
+            "x": 250,
+            "y": 90,
+            "scale": 1,
+            "shirt": "#f5a623",
+            "flip": false,
+            "face": "happy",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "lightbulb",
+            "x": 400,
+            "y": 40,
+            "scale": 1
+          }
+        ]
+      },
+      "level": "B2",
+      "title": "Grasp",
+      "meaning": "To understand a difficult concept or situation fully.",
+      "example": "It took me a while to grasp the core of the argument.",
+      "notes": "Often used with 'fully' or 'completely'. It suggests moving from confusion to clarity.",
+      "conversation": "A: Do you grasp the implications of this change?\nB: I think I understand the technical side.\nA: What about the long-term effects?\nB: That part is still a bit hazy for me.",
+      "exercise": "Fill in the blank: 'I finally _____ the concept after reading the manual.' Model: 'I finally grasped the concept after reading the manual.'",
+      "scene": "A person standing in a warm-lit room, looking up at a glowing lightbulb with a smile."
+    },
+    {
+      "image": {
+        "background": "#f0f0f0",
+        "description": "A person trying to balance two objects on a scale, looking frustrated.",
+        "characters": [
+          {
+            "x": 180,
+            "y": 70,
+            "scale": 1,
+            "shirt": "#d0021b",
+            "flip": false,
+            "face": "worried",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "balance",
+            "x": 400,
+            "y": 120,
+            "scale": 1.1
+          }
+        ]
+      },
+      "level": "C1",
+      "title": "Trade-off",
+      "meaning": "A situation where you must accept less of one thing to have more of another.",
+      "example": "There is a trade-off between speed and quality in this design.",
+      "notes": "Focuses on the necessity of sacrifice. Use 'a trade-off between X and Y'.",
+      "conversation": "A: We can get it done fast, but quality will suffer.\nB: That is a tough trade-off to make.\nA: We need to prioritize reliability here.\nB: I agree, let us choose quality over speed.",
+      "exercise": "Describe a trade-off in your daily life. Model: 'I face a trade-off between sleeping longer and having a healthy breakfast.'",
+      "scene": "A person looking at a balance scale with weights on each side, showing a difficult choice."
+    },
+    {
+      "image": {
+        "background": "#e0f7fa",
+        "description": "A person standing at a crossroads, looking at a map.",
+        "characters": [
+          {
+            "x": 300,
+            "y": 80,
+            "scale": 1,
+            "shirt": "#00796b",
+            "flip": false,
+            "face": "curious",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "road",
+            "x": 100,
+            "y": 200,
+            "scale": 1
+          }
+        ]
+      },
+      "level": "C1",
+      "title": "Pivot",
+      "meaning": "To change your direction or strategy, usually in business or a project.",
+      "example": "The startup had to pivot when their first product failed.",
+      "notes": "Implies a deliberate shift after realizing the current path is not working.",
+      "conversation": "A: The market response was not what we expected.\nB: We might need to pivot our strategy.\nA: What direction should we take instead?\nB: Let us focus on the customer service aspect.",
+      "exercise": "Use 'pivot' in a sentence about a project. Model: 'We decided to pivot the marketing campaign to target younger users.'",
+      "scene": "A person standing in the middle of a road fork, holding a map and deciding which way to go."
+    },
+    {
+      "image": {
+        "background": "#fff3e0",
+        "description": "A person holding a key, looking at a locked door.",
+        "characters": [
+          {
+            "x": 220,
+            "y": 75,
+            "scale": 1,
+            "shirt": "#ff9800",
+            "flip": false,
+            "face": "calm",
+            "pose": "reach"
+          }
+        ],
+        "props": [
+          {
+            "kind": "puzzle",
+            "x": 400,
+            "y": 100,
+            "scale": 0.8
+          }
+        ]
+      },
+      "level": "C2",
+      "title": "The crux of the matter",
+      "meaning": "The most important or decisive point of a problem.",
+      "example": "The crux of the matter is our lack of funding.",
+      "notes": "Used to cut through peripheral details. It is formal and assertive.",
+      "conversation": "A: We have discussed many minor issues today.\nB: Yes, but we need to focus on the core.\nA: You mean the budget deficit?\nB: Exactly, that is the crux of the matter.",
+      "exercise": "Identify the 'crux of the matter' in a project delay. Model: 'The crux of the matter is the missing component from our supplier.'",
+      "scene": "A person piecing together the final, central piece of a large puzzle on a table."
+    },
+    {
+      "image": {
+        "background": "#f3e5f5",
+        "description": "Two people standing on opposite sides of a bridge, trying to reach each other.",
+        "characters": [
+          {
+            "x": 150,
+            "y": 85,
+            "scale": 0.9,
+            "shirt": "#7b1fa2",
+            "flip": false,
+            "face": "calm",
+            "pose": "up"
+          },
+          {
+            "x": 450,
+            "y": 85,
+            "scale": 0.9,
+            "shirt": "#4a148c",
+            "flip": true,
+            "face": "calm",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "bridge",
+            "x": 300,
+            "y": 200,
+            "scale": 1
+          }
+        ]
+      },
+      "level": "C2",
+      "title": "Bridge the gap",
+      "meaning": "To reduce the difference between two groups or ideas.",
+      "example": "We need to bridge the gap between management and staff.",
+      "notes": "Used in formal contexts to describe reconciliation or alignment. Implies a persistent effort.",
+      "conversation": "A: There is a disconnect between our departments.\nB: How can we bridge the gap effectively?\nA: More frequent collaborative meetings.\nB: That sounds like a pragmatic solution.",
+      "exercise": "Complete: 'Communication is essential to _____.' Model: 'Communication is essential to bridge the gap between teams.'",
+      "scene": "Two people standing on opposite ends of a small bridge, looking toward the middle."
+    },
+    {
+      "image": {
+        "background": "#e8f5e9",
+        "description": "A person watering a plant carefully.",
+        "characters": [
+          {
+            "x": 250,
+            "y": 70,
+            "scale": 1,
+            "shirt": "#2e7d32",
+            "flip": false,
+            "face": "happy",
+            "pose": "point"
+          }
+        ],
+        "props": [
+          {
+            "kind": "plant",
+            "x": 400,
+            "y": 150,
+            "scale": 1.2
+          }
+        ]
+      },
+      "level": "B2",
+      "title": "Nurture",
+      "meaning": "To help something or someone develop and succeed.",
+      "example": "Teachers nurture the talent of their students.",
+      "notes": "Used for long-term growth. It implies patience and care.",
+      "conversation": "A: How do you keep your team motivated?\nB: I try to nurture their professional growth.\nA: Do you provide mentorship?\nB: Yes, I dedicate time to their development.",
+      "exercise": "Write a sentence using 'nurture' for an idea. Model: 'We must nurture this new idea until it becomes a viable project.'",
+      "scene": "A person smiling while gently watering a small, green potted plant on a bench."
+    },
+    {
+      "image": {
+        "background": "#fffde7",
+        "description": "A person writing a note on a clipboard, looking thoughtful.",
+        "characters": [
+          {
+            "x": 300,
+            "y": 60,
+            "scale": 1,
+            "shirt": "#fbc02d",
+            "flip": false,
+            "face": "neutral",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "clipboard",
+            "x": 150,
+            "y": 100,
+            "scale": 1
+          }
+        ]
+      },
+      "level": "B2",
+      "title": "Ambition is the fuel, but consistency is the engine.",
+      "meaning": "While dreams drive you, daily routine achieves the goal.",
+      "example": "Stay focused on your daily habits, not just the big dream.",
+      "notes": "This highlights that starting is easy, but finishing requires steady, predictable effort.",
+      "conversation": "A: I have so many big plans for this year.\nB: That is great, but how is your daily routine?\nA: It is a bit inconsistent at the moment.\nB: Remember, consistency is the engine.",
+      "exercise": "Explain the quote in your own words. Model: 'Big goals are not enough; you need steady work every day to succeed.'",
+      "scene": "A person standing next to a large clipboard, writing down a daily checklist."
+    },
+    {
+      "image": {
+        "background": "#e1f5fe",
+        "description": "Two people talking by a coffee machine.",
+        "characters": [
+          {
+            "x": 150,
+            "y": 90,
+            "scale": 1,
+            "shirt": "#0288d1",
+            "flip": false,
+            "face": "happy",
+            "pose": "up"
+          },
+          {
+            "x": 450,
+            "y": 90,
+            "scale": 1,
+            "shirt": "#01579b",
+            "flip": true,
+            "face": "happy",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "coffee",
+            "x": 300,
+            "y": 200,
+            "scale": 1
+          }
+        ]
+      },
+      "level": "C1",
+      "title": "Small Talk: Weekend Plans",
+      "meaning": "Engaging in casual, light conversation about upcoming plans.",
+      "example": "Do you have anything exciting planned for the weekend?",
+      "notes": "Keep it light. Follow up on specific details shared by the other person.",
+      "conversation": "A: Do you have any plans for the weekend?\nB: I am thinking of hiking on Saturday. You?\nA: That sounds lovely! I might just relax at home.\nB: Do you enjoy reading or watching movies?\nA: Mostly reading. What about your hike?\nB: It is a local trail, very peaceful.",
+      "exercise": "Reply to 'What are you doing this weekend?' Model: 'I am planning to visit the new museum downtown. How about you?'",
+      "scene": "Two colleagues standing near a coffee station, talking and smiling."
+    },
+    {
+      "image": {
+        "background": "#fbe9e7",
+        "description": "A person looking at an envelope and a clock, feeling rushed.",
+        "characters": [
+          {
+            "x": 250,
+            "y": 80,
+            "scale": 1,
+            "shirt": "#bf360c",
+            "flip": false,
+            "face": "worried",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "clock",
+            "x": 400,
+            "y": 50,
+            "scale": 1.2
+          },
+          {
+            "kind": "envelope",
+            "x": 150,
+            "y": 150,
+            "scale": 1
+          }
+        ]
+      },
+      "level": "C1",
+      "title": "Under the gun",
+      "meaning": "To be under a lot of pressure to finish something quickly.",
+      "example": "We are under the gun to finish the report by five.",
+      "notes": "Used for strict deadlines. It implies high stress.",
+      "conversation": "A: Is the proposal finished yet?\nB: Not yet, we are really under the gun.\nA: When is the final deadline?\nB: We have to submit it in two hours.",
+      "exercise": "Rewrite 'The deadline is very tight' using the idiom. Model: 'We are under the gun to meet this deadline.'",
+      "scene": "A person looking anxiously at a clock on the wall while holding an important envelope."
+    }
+  ]
+}
