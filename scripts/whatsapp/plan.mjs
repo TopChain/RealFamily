@@ -4,9 +4,9 @@ export function pacificClock(now=new Date()){
  return {date:`${parts.year}-${parts.month}-${parts.day}`,due:Number(parts.hour)*60+Number(parts.minute)>=450};
 }
 export function plan(edition,routes,date){
- if(edition.date!==date||edition.lessons?.length!==10)throw Error('Today must have ten complete cards');
+ if(edition.date!==date||![10,11].includes(edition.lessons?.length))throw Error('Today must have ten complete cards');
  const counts={};const ids=new Set();
- const jobs=edition.lessons.map(l=>{
+ const jobs=edition.lessons.filter(l=>l.image!=='essay').map(l=>{
   const category=CATEGORIES[l.image];const route=routes.find(r=>r.category===category);
   if(!category||!route||!/^\d+(-\d+)?@g\.us$/.test(route.jid)||!l.id.startsWith(date+'-')||ids.has(l.id)||!l.filename||/[\/\\]/.test(l.filename))throw Error('Invalid lesson or verified group route');
   ids.add(l.id);counts[l.image]=(counts[l.image]||0)+1;return {lesson:l,route};
