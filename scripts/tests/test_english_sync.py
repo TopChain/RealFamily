@@ -18,7 +18,7 @@ class SourceSyncTests(unittest.TestCase):
                 import json
                 edition=json.loads((s.ROOT/'data/english-staged'/f'{date}.json').read_text())
                 s.validate(s.ROOT,edition)
-                self.assertEqual(len(list((s.ROOT/'data/english-images'/date).glob('*.png'))),10)
+                self.assertEqual(len(list((s.ROOT/'data/english-images'/date).glob('*.png'))),len(edition['lessons']))
             self.assertFalse((s.ROOT/'data/latest.json').exists())
             # A second check performs no downloads and preserves complete editions.
             with patch.object(s.urllib.request,'urlopen',side_effect=AssertionError('No unnecessary download')):s.sync()
