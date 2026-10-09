@@ -3,6 +3,10 @@
     "kitchen-2026-10-09-batch-0": 1,
     "kitchen-2026-10-09-batch-1": 1
   },
-  "paused": true,
-  "reason": "Free API unavailable; check quota before resuming"
+  "paused": false,
+  "reason": "Free tier and unused quota rechecked in AI Studio; one explicit diagnostic recovery permitted",
+  "approvedRecoveryKeys": [
+    "kitchen-2026-10-09-batch-0"
+  ],
+  "freeQuotaRecheckedOn": "2026-10-08"
 }

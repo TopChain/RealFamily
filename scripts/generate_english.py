@@ -112,6 +112,7 @@ def reserve_request(date,limit=2):
     status=json.loads(file.read_text()) if file.exists() else {}
     assert not status.get('paused'),'Generation paused after a failed API request; check free quota before resuming'
     requests=status.setdefault('requests',{})
+    limit+=int(date in status.get('approvedRecoveryKeys',[]))
     assert requests.get(date,0)<limit,'Request cap reached; existing draft retained for review'
     requests[date]=requests.get(date,0)+1
     file.write_text(json.dumps(status,indent=2)+'\n')
