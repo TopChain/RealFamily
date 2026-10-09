@@ -1,4 +1,5 @@
 import {randomBytes,createHash,timingSafeEqual} from 'node:crypto';
+import {designedEmail,p,button,note} from './email-design.mjs';
 export const TOPICS={news:'World & AI news',markets:'Global markets',health:'Healthy living',recipes:'Family kitchen',english:'Everyday English'};
 export const hash=s=>createHash('sha256').update(s).digest('hex');
 export const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -26,7 +27,7 @@ export function createService(pool,env){
   if(!isAdmin(request))return json({error:'Unauthorized'},401);
   if(action==='mail-digests'&&request.method==='POST'){
    const response=await fetch('https://www.topchainfresh.com/realfamily/data/latest.json',{signal:AbortSignal.timeout(15000)});if(!response.ok)return json({error:'Website data unavailable'},503);
-   const {queueDigests}=await import('./digests.mjs');return json({queued:await queueDigests(pool,await response.json())});
+   const {queueDigests}=await import('./digests.mjs');const data=await response.json();const day=new Date().toLocaleDateString('en-CA',{timeZone:'America/Los_Angeles'});const recipes=await fetch('https://www.topchainfresh.com/realfamily/data/recipes-archive/'+day+'.json',{signal:AbortSignal.timeout(15000)});if(!recipes.ok)return json({error:'Daily recipe archive unavailable'},503);data.familyRecipes=(await recipes.json()).recipes;return json({queued:await queueDigests(pool,data)});
   }
   if(action==='mail-claim'&&request.method==='POST'){
    const lease=randomBytes(24).toString('hex');
@@ -69,7 +70,7 @@ export function createService(pool,env){
   if(limits.email_count>=3||limits.total>=100){await client.query('ROLLBACK');return new Response(JSON.stringify({error:'Please try again later.'}),{status:429,headers:{...headers,'Content-Type':'application/json','Retry-After':'3600'}})}
   const token=randomBytes(32).toString('hex'),url=base+'?action=confirm&token='+token;
   await client.query("INSERT INTO realfamily.subscription_requests(token_hash,email,topics,expires_at) VALUES($1,$2,$3,now()+interval '48 hours')",[hash(token),selection.email,selection.topics]);
-  const names=selection.topics.map(t=>TOPICS[t]);const content=`<h1>Real Family</h1><p>You requested a daily email for: ${names.map(escape).join(', ')}.</p><p><a href="${escape(url)}">Confirm your subscription</a></p><p>This link expires in 48 hours. If you did not request this, ignore this email. Nothing is subscribed until you confirm.</p>`;
+  const names=selection.topics.map(t=>TOPICS[t]);const content=designedEmail({title:'A good thing, delivered daily.',kicker:'CONFIRM YOUR SUBSCRIPTION',intro:'One daily digest. Only the topics you choose.',body:p('You requested: '+names.join(', '))+button('Confirm your subscription',url)+note('This link expires in 48 hours. If you did not request this email, simply ignore it. Your subscription starts only after confirmation.')});
   await client.query("INSERT INTO realfamily.mail_outbox(recipient,kind,subject,html,dedupe_key) VALUES($1,'confirmation',$2,$3,$4)",[selection.email,'Real Family · Confirm subscription · '+token.slice(0,12),content,'confirmation-'+hash(token)]);
   await client.query('COMMIT');return json({ok:true},202);
  }catch(error){await client.query('ROLLBACK');throw error}finally{client.release()}
