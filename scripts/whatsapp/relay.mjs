@@ -22,18 +22,18 @@ let qr='',status='Preparing secure connection',server;
 if(pairing){
  server=http.createServer(async(req,res)=>{res.setHeader('Cache-Control','no-store');res.setHeader('Content-Type','text/html; charset=utf-8');res.end(`<html><meta http-equiv="refresh" content="10"><title>Real Family WhatsApp linking</title><body style="font:22px system-ui;background:#f6f5ef;color:#183e36;padding:40px;text-align:center"><h1>Real Family</h1><p>${status}</p>${qr?'<img width="320" src="'+await QRCode.toDataURL(qr)+'">':''}<p>WhatsApp → Settings → Linked devices → Link a device</p><p>Daily cards: 7:30 AM PT</p></body></html>`)});server.listen(8770,'127.0.0.1');console.log('Phone linking page ready at http://127.0.0.1:8770');
 }
-let socket;let done=false;let success=false;let reconnects=0;
+let socket;let done=false;let success=false;let reconnects=0;let stage='connecting';
 const timeout=setTimeout(()=>{console.error('Connection deadline reached; no unconfirmed card is resent.');process.exit(1)},pairing?600000:180000);
 async function complete(){
  if(pairing){
-  const routing=JSON.parse(await readFile(join(root,'data/whatsapp-routing.private.json'),'utf8'));
-  const groups=Object.values(await socket.groupFetchAllParticipating());
-  await writeFile('/tmp/realfamily-whatsapp-private/group-check.json',JSON.stringify(routing.routes.map(route=>({category:route.category,expected:route.groupName,matches:groups.filter(g=>g.subject===route.groupName).length,similar:groups.filter(g=>g.subject.toLowerCase().includes(route.groupName.split('@')[0].toLowerCase())).map(g=>({name:g.subject,jid:g.id,participants:g.participants.length,created:g.creation}))}))),{mode:0o600});
-  const routes=routing.routes.map(route=>{const matches=groups.filter(g=>g.subject===route.groupName&&(!route.jid||g.id===route.jid));if(matches.length!==1)throw Error('A destination is missing or ambiguous');return {...route,jid:matches[0].id}});
-  await put('routes',routes);await scheduleSave();
+  stage='loading group settings';const routing=JSON.parse(await readFile(join(root,'data/whatsapp-routing.private.json'),'utf8'));
+  stage='fetching groups';const groups=Object.values(await socket.groupFetchAllParticipating());
+  await writeFile('/tmp/realfamily-whatsapp-private/group-check.json',JSON.stringify(routing.routes.map(route=>({category:route.category,expected:route.groupName,pinnedCurrent:groups.find(g=>g.id===route.jid)?.subject||null,matches:groups.filter(g=>g.subject===route.groupName).length,similar:groups.filter(g=>g.subject.toLowerCase().includes(route.groupName.split('@')[0].toLowerCase())).map(g=>({name:g.subject,jid:g.id,participants:g.participants.length,created:g.creation}))}))),{mode:0o600});
+  stage='matching destinations';const routes=routing.routes.map(route=>{const matches=groups.filter(g=>g.subject===route.groupName&&(!route.jid||g.id===route.jid));if(matches.length!==1)throw Error('A destination is missing or ambiguous');return {...route,jid:matches[0].id}});
+  stage='saving verified routes';await put('routes',routes);await scheduleSave();
   // Desktop deliveries are verified locally. Reserve their original IDs so a cloud
   // cutover cannot repeat today's already-delivered cards; do not invent server IDs.
-  const past=JSON.parse(await readFile(join(root,'data/whatsapp-send-log.private.json'),'utf8'));
+  stage='seeding previous deliveries';const past=JSON.parse(await readFile(join(root,'data/whatsapp-send-log.private.json'),'utf8'));
   for(const record of past.deliveries||[])if(record.verified&&record.status==='sent'){
    const route=routes.find(r=>r.category===record.category);if(!route)continue;
    for(const lessonId of record.lessonIds||[]){const claim=await api('wa-claim',{lessonId,destinationHash:createHash('sha256').update(route.jid).digest('hex')});if(claim.allowed)await api('wa-result',{lessonId,status:'uncertain'})}
@@ -62,7 +62,7 @@ function connect(){
  socket.ev.on('connection.update',async update=>{
   if(update.qr&&pairing){qr=update.qr;status='Scan this code with your phone. Never share this screen.';await QRCode.toFile('/tmp/realfamily-whatsapp-private/link-device.png',qr,{width:480,margin:4});const {chmod}=await import('node:fs/promises');await chmod('/tmp/realfamily-whatsapp-private/link-device.png',0o600);console.log('Private phone-linking image refreshed.')}
   if(update.connection==='close'&&!done){const code=update.lastDisconnect?.error?.output?.statusCode;if(code===515||pairing&&[408,428].includes(code)&&reconnects++<3)connect();else{console.error('WhatsApp disconnected; status '+(code||'unknown')+'; phone linking or review required.');process.exit(1)}}
-  if(update.connection==='open'&&!done){done=true;try{await complete();await saveChain;if(!pairing){clearTimeout(timeout);socket.end(undefined);await rm(folder,{recursive:true,force:true})}else if(success)clearTimeout(timeout)}catch{status='Setup could not verify all destinations. Please return to Codex.';console.error('Relay failed safely; no private account details printed.');process.exit(1)}}
+  if(update.connection==='open'&&!done){done=true;try{await complete();await saveChain;if(!pairing){clearTimeout(timeout);socket.end(undefined);await rm(folder,{recursive:true,force:true})}else if(success)clearTimeout(timeout)}catch(error){if(pairing)await writeFile('/tmp/realfamily-whatsapp-private/failure.json',JSON.stringify({stage,error:String(error?.message||'unknown')}),{mode:0o600});status='Setup could not verify all destinations. Please return to Codex.';console.error('Relay failed safely at '+stage+'; no private account details printed.');process.exit(1)}}
  });
 }
 connect();
