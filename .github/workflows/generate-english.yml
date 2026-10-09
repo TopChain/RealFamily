@@ -56,7 +56,7 @@ jobs:
           git config user.name 'Real Family curriculum'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           mkdir -p data/recipes-staged data/recipe-drafts
-          git add data/english-staged data/english-images assets/english data/recipes-staged data/recipe-drafts
+          git add data/english-staged data/english-images data/english-print assets/english data/recipes-staged data/recipe-drafts
           if [ -d data/english-drafts ]; then git add data/english-drafts; fi
           if [ -f data/english-generation-status.json ]; then git add data/english-generation-status.json; fi
           git diff --cached --quiet || git commit -m 'Prepare dated English and twenty new kitchen recipes'
