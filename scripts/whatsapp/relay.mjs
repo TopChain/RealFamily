@@ -40,9 +40,13 @@ async function complete(){
   }
   qr='';status='Connected. Seven destination groups verified. You can close this page.';success=true;console.log('Phone linked; all seven groups verified. No cards sent during setup.');socket.end(undefined);return;
  }
+ const verifiedRoutes=await get('routes');if(!verifiedRoutes)throw Error('Group routes are not verified');
+ const activeGroups=await socket.groupFetchAllParticipating();
+ if(verifiedRoutes.length!==7||verifiedRoutes.some(r=>activeGroups[r.jid]?.subject!==r.groupName))throw Error('Verified destination changed or unavailable');
+ if(process.env.WHATSAPP_VERIFY_ONLY==='true'){console.log('Cloud session restored; all seven selected groups verified. Verification only: zero cards sent.');return}
  const clock=pacificClock();if(!clock.due){console.log('Before 7:30 AM PT; no cards sent.');return}
  const edition=JSON.parse(await readFile(join(root,'data/english-archive',clock.date+'.json'),'utf8'));
- const routes=await get('routes');if(!routes)throw Error('Group routes are not verified');const jobs=plan(edition,routes,clock.date);
+ const routes=verifiedRoutes;const jobs=plan(edition,routes,clock.date);
  // Validate every image before claiming any delivery.
  for(const job of jobs){job.png=await readFile(join(root,'data/english-images',clock.date,job.lesson.filename));if(job.png.toString('hex',0,8)!=='89504e470d0a1a0a'||job.png.readUInt32BE(16)!==660||job.png.readUInt32BE(20)!==1434)throw Error('Invalid PNG')}
  for(const {lesson,route,png} of jobs){

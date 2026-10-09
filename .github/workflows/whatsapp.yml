@@ -5,6 +5,11 @@ on:
     - cron: '30 14,15 * * *'
     - cron: '45 16 * * *'
   workflow_dispatch:
+    inputs:
+      verify_only:
+        description: Restore cloud session and verify groups without sending cards
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -12,11 +17,12 @@ concurrency:
   cancel-in-progress: false
 jobs:
   cards:
-    if: vars.WHATSAPP_CLOUD_ENABLED == 'true'
+    if: vars.WHATSAPP_CLOUD_ENABLED == 'true' || inputs.verify_only == true
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
       WHATSAPP_STATE_KEY: ${{ secrets.WHATSAPP_STATE_KEY }}
+      WHATSAPP_VERIFY_ONLY: ${{ inputs.verify_only && 'true' || 'false' }}
       MAILER_SECRET: ${{ secrets.MAILER_SECRET }}
       SUBSCRIPTION_ENDPOINT: https://real-family-subscriptions.vercel.app/api/subscription
     steps:
