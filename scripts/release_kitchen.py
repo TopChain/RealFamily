@@ -8,7 +8,7 @@ def history(root,exclude=None):
     for folder in ('recipes-archive','recipes-staged'):
         for file in (root/'data'/folder).glob('*.json'):
             if file.stem!=exclude:rows.extend(json.loads(file.read_text())['recipes'])
-    return rows
+    return list({normalized(r['title']):r for r in rows}.values())
 def validate(root,edition,photos=True):
     dt.date.fromisoformat(edition['date'])
     rows=edition['recipes']

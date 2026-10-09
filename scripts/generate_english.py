@@ -54,7 +54,7 @@ def generate(prompt):
         with urllib.request.urlopen(request,timeout=180) as response:data=json.load(response)
     except urllib.error.HTTPError as error:
         if error.code in (402,403,429):raise RuntimeError('Free API unavailable or quota exhausted; generation stopped without paid fallback.') from None
-        raise RuntimeError('Text request failed; no automatic retry or paid fallback.') from None
+        raise RuntimeError('Text request failed (HTTP '+str(error.code)+'); no automatic retry or paid fallback.') from None
     except Exception:raise RuntimeError('Text response uncertain; no automatic retry.') from None
     candidate=data.get('candidates',[{}])[0]
     assert candidate.get('finishReason')=='STOP','Incomplete text response'
