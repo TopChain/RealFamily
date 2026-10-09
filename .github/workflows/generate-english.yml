@@ -1,0 +1,56 @@
+name: Free-tier daily English and simple comics
+on:
+  schedule:
+    # Prepare tomorrow at 9 PM PT; alternate offset is an idempotent check.
+    - cron: '40 4,5 * * *'
+  workflow_dispatch:
+    inputs:
+      check_api:
+        description: Verify the confirmed free text API with a tiny JSON response
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: real-family-refresh
+  cancel-in-progress: false
+jobs:
+  prepare:
+    if: vars.GEMINI_FREE_TIER_PROJECT == 'gen-lang-client-0709553800' && vars.GEMINI_GENERATION_MODE == 'free_only' && vars.GEMINI_PAID_GENERATION_ENABLED == 'false'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_GENERATION_MODE: ${{ vars.GEMINI_GENERATION_MODE }}
+      GEMINI_PAID_GENERATION_ENABLED: ${{ vars.GEMINI_PAID_GENERATION_ENABLED }}
+      GEMINI_FREE_TIER_PROJECT: ${{ vars.GEMINI_FREE_TIER_PROJECT }}
+      GEMINI_FREE_TIER_VERIFIED_ON: ${{ vars.GEMINI_FREE_TIER_VERIFIED_ON }}
+      REAL_FAMILY_SHARP: ${{ github.workspace }}/scripts/render/node_modules/sharp
+      REAL_FAMILY_CANVAS: ${{ github.workspace }}/scripts/render/node_modules/@napi-rs/canvas
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: scripts/render/package-lock.json
+      - run: npm ci --prefix scripts/render
+      - name: Check confirmed free text API
+        if: inputs.check_api == true
+        run: python scripts/generate_english.py --check-api
+      - name: Prepare complete editions without overwriting existing dates
+        run: python scripts/generate_english.py
+      - name: Preserve completed work and checkpoints
+        if: always()
+        run: |
+          git config user.name 'Real Family curriculum'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data/english-staged data/english-images assets/english
+          if [ -d data/english-drafts ]; then git add data/english-drafts; fi
+          if [ -f data/english-generation-status.json ]; then git add data/english-generation-status.json; fi
+          git diff --cached --quiet || git commit -m 'Prepare dated English curriculum and topic comics'
+          git pull --rebase origin main
+          git push

@@ -9,14 +9,14 @@ The website's GitHub schedules run without this computer. The complete system is
 | News and market feeds | Cloud schedule exists; refresh rules select three-hour PT slots | Monitor scheduled runs; GitHub schedules can be delayed |
 | Health research and date archives | Cloud daily refresh exists | Continue preserving original sources and dates |
 | Kitchen date archives | Cloud daily snapshots and curated recipe rotation | New recipes are not automatically invented every day |
-| English release | Complete staged editions release on their PT date | Continuous new content and unique illustrations require an AI API |
+| English generation and release | Free-tier text pipeline and approved program-drawn comics prepared; complete editions release on their PT date | Verify the first cloud text call and first newly authored edition; API quota failures stop generation |
 | Subscription emails | Cloud relay enabled; sender, scopes and private queue verified | Observe real queued mail delivery; current queue was empty |
 | Fixed ten-card email delivery | Canceled by the owner | Send email only for valid confirmed subscriptions; no fixed mailbox delivery or catch-up |
 | Seven existing WhatsApp groups | Encrypted linked-device relay enabled; GitHub restored the session and verified all seven groups | First new-card cloud delivery is still to be observed; schedules can be delayed and device relinking may be needed |
 
 ## Gemini
 
-Gemini can supply lesson text and topic-specific simple comic illustrations. A Gemini website/App subscription is different from the Developer API. Choose models and approve an API budget before activating paid generation. No paid AI generation has been enabled by this change.
+Gemini can supply lesson text and topic-specific simple comic illustrations. A Gemini website/App subscription is different from the Developer API. Choose models and approve an API budget before activating paid generation. No paid AI generation has been enabled. On 2026-10-08 PT the owner approved simple program-drawn comics. The account’s Default Gemini Project showed Free tier with Gemini 3.1 Flash Lite limits of 15 RPM, 250K TPM and 500 RPD; native image models had zero quota. Generation uses two bounded text requests per new date, no image API, no paid fallback, and persists failure checkpoints.
 
 ## Cloud Gmail relay
 
@@ -28,8 +28,8 @@ Current implementation sends the existing subscription HTML exactly as designed.
 
 ## Activation checklist
 
-1. Choose Gemini Developer API account, models, and approved budget; store its key privately.
-2. Implement generation, complete-edition validation, portable card rendering, retry checkpoints, and publishing into both repositories.
+1. Free-tier account and Gemini 3.1 Flash Lite verified; do not activate billing or paid models.
+2. Generation, editorial review, complete-edition validation, portable rendering, request checkpoints and parent-site source sync prepared. Verify the first real cloud call and a newly authored date before claiming end-to-end generation success.
 3. Completed: Google OAuth is in production; sender, send/read scopes and offline credentials were verified in cloud.
 4. Fixed daily ten-card email was canceled by the owner. Only valid confirmed subscriptions qualify for email delivery.
 5. Completed: owner approved and linked the nonofficial cloud device; encrypted routes use verified group IDs. Observe the first new-card delivery and relink on failure.
