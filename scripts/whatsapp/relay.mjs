@@ -22,7 +22,7 @@ let qr='',status='Preparing secure connection',server;
 if(pairing){
  server=http.createServer(async(req,res)=>{res.setHeader('Cache-Control','no-store');res.setHeader('Content-Type','text/html; charset=utf-8');res.end(`<html><meta http-equiv="refresh" content="10"><title>Real Family WhatsApp linking</title><body style="font:22px system-ui;background:#f6f5ef;color:#183e36;padding:40px;text-align:center"><h1>Real Family</h1><p>${status}</p>${qr?'<img width="320" src="'+await QRCode.toDataURL(qr)+'">':''}<p>WhatsApp → Settings → Linked devices → Link a device</p><p>Daily cards: 7:30 AM PT</p></body></html>`)});server.listen(8770,'127.0.0.1');console.log('Phone linking page ready at http://127.0.0.1:8770');
 }
-let socket;let done=false;let success=false;
+let socket;let done=false;let success=false;let reconnects=0;
 const timeout=setTimeout(()=>{console.error('Connection deadline reached; no unconfirmed card is resent.');process.exit(1)},pairing?600000:180000);
 async function complete(){
  if(pairing){
@@ -55,8 +55,8 @@ function connect(){
  socket=makeWASocket({auth:state,logger:pino({level:'silent'}),syncFullHistory:false,shouldSyncHistoryMessage:()=>false,markOnlineOnConnect:false,browser:['Real Family','Chrome','1.0']});
  socket.ev.on('creds.update',async()=>{try{await saveCreds();await scheduleSave()}catch{console.error('Session persistence failed');process.exit(1)}});
  socket.ev.on('connection.update',async update=>{
-  if(update.qr&&pairing){qr=update.qr;status='Scan this code with your phone. Never share this screen.'}
-  if(update.connection==='close'&&!done){const code=update.lastDisconnect?.error?.output?.statusCode;if(code===515)connect();else{console.error('WhatsApp disconnected; phone linking or review required.');process.exit(1)}}
+  if(update.qr&&pairing){qr=update.qr;status='Scan this code with your phone. Never share this screen.';await QRCode.toFile('/tmp/realfamily-whatsapp-private/link-device.png',qr,{width:480,margin:4});const {chmod}=await import('node:fs/promises');await chmod('/tmp/realfamily-whatsapp-private/link-device.png',0o600);console.log('Private phone-linking image refreshed.')}
+  if(update.connection==='close'&&!done){const code=update.lastDisconnect?.error?.output?.statusCode;if(code===515||pairing&&[408,428].includes(code)&&reconnects++<3)connect();else{console.error('WhatsApp disconnected; status '+(code||'unknown')+'; phone linking or review required.');process.exit(1)}}
   if(update.connection==='open'&&!done){done=true;try{await complete();await saveChain;if(!pairing){clearTimeout(timeout);socket.end(undefined);await rm(folder,{recursive:true,force:true})}else if(success)clearTimeout(timeout)}catch{status='Setup could not verify all destinations. Please return to Codex.';console.error('Relay failed safely; no private account details printed.');process.exit(1)}}
  });
 }
