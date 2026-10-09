@@ -6,7 +6,7 @@
   "paused": false,
   "reason": "Free tier and unused quota rechecked in AI Studio; one explicit diagnostic recovery permitted",
   "approvedRecoveryKeys": [
-    "kitchen-2026-10-09-batch-0"
+    "kitchen-2026-10-09-batch-1"
   ],
   "freeQuotaRecheckedOn": "2026-10-08"
 }
