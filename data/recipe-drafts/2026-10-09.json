@@ -44,25 +44,38 @@
         {
           "name": "Chicken broth",
           "amount": "250mL"
+        },
+        {
+          "name": "Potatoes, cut into 2 cm cubes",
+          "amount": "900 g"
+        },
+        {
+          "name": "Green beans, trimmed",
+          "amount": "600 g"
+        },
+        {
+          "name": "Olive oil for vegetables",
+          "amount": "30 mL"
+        },
+        {
+          "name": "Salt for vegetables",
+          "amount": "3 g"
         }
       ],
       "steps": [
-        "Preheat the oven to 400°F / 200°C. Line a large rimmed baking sheet with parchment paper.",
+        "Preheat the oven to 400°F / 200°C. Line a large rimmed baking sheet with parchment paper. Toss potatoes with 20 mL oil and 2 g salt on a separate rimmed tray; roast for 10 minutes before adding the meatballs.",
         "In a large bowl, gently combine turkey, cranberries, breadcrumbs, egg, sage, salt, and pepper until just mixed; do not overwork.",
         "Shape the mixture into 18 equal meatballs, approximately 60g each.",
         "Heat olive oil in a large oven-safe skillet over medium-high heat. Brown the meatballs in batches for 5 minutes, turning carefully.",
         "Transfer browned meatballs to the prepared baking sheet. Pour chicken broth into the pan to deglaze, then pour over the meatballs.",
-        "Bake for 15-20 minutes until the center of the meatballs reaches 165°F / 74°C.",
-        "Remove from the oven and let rest for 5 minutes. Serve three meatballs per person with pan juices.",
+        "Bake for 15-20 minutes until the center of the meatballs reaches 165°F / 74°C. Continue roasting potatoes until tender, about 30-40 minutes total. Toss green beans with the remaining vegetable oil and salt and add to the potato tray for its final 15 minutes.",
+        "Remove from the oven and let rest for 5 minutes. Serve three meatballs per person with pan juices. Divide the roasted potatoes and green beans among the six plates.",
         "Refrigerate leftovers within 2 hours; consume within 3-4 days. Reheat to 165°F / 74°C."
       ],
-      "allergens": [
-        "Egg",
-        "Wheat"
-      ],
+      "allergens": "Egg, Wheat",
       "note": "The cranberries add a subtle sweetness perfect for the October season.",
       "storage": "Store in an airtight container in the refrigerator for up to 4 days. Not recommended for freezing due to texture changes.",
-      "photoSearch": "turkey meatballs with cranberry"
+      "photoSearch": "meatballs"
     },
     {
       "cuisine": "American",
@@ -103,17 +116,15 @@
         "Divide into six small bowls, approximately 50g each.",
         "Store in an airtight container at room temperature for up to 5 days; if they lose crispness, re-toast in the oven for 3 minutes."
       ],
-      "allergens": [
-        "Milk"
-      ],
+      "allergens": "Milk",
       "note": "Best enjoyed as a crunchy seasonal snack.",
-      "storage": "Keep in an airtight jar at room temperature for up to 1 week.",
-      "photoSearch": "roasted pumpkin seeds maple"
+      "storage": "Cool completely, then keep in an airtight jar at room temperature for up to 5 days.",
+      "photoSearch": "roasted pumpkin seeds"
     },
     {
       "cuisine": "European",
       "meal": "Main",
-      "title": "Rustic Root Vegetable Shepherd's Pie",
+      "title": "Rustic Root Vegetable Cottage Pie",
       "serves": 6,
       "prep": 25,
       "cook": 45,
@@ -157,24 +168,30 @@
         {
           "name": "Dried thyme",
           "amount": "3g"
+        },
+        {
+          "name": "Salt",
+          "amount": "5 g"
+        },
+        {
+          "name": "Black pepper",
+          "amount": "2 g"
         }
       ],
       "steps": [
-        "Preheat the oven to 400°F / 200°C. Boil potatoes in salted water until tender, then mash with butter and milk.",
+        "Preheat the oven to 400°F / 200°C. Boil potatoes in water with half the measured salt until tender, then mash with butter and milk.",
         "In a large skillet, brown the beef with onions and carrots over medium-high heat until the meat reaches 160°F / 71°C.",
         "Stir in tomato paste, thyme, and beef broth. Simmer for 8 minutes until the liquid reduces slightly.",
-        "Stir in the frozen peas and season with salt and pepper to taste.",
+        "Stir in the frozen peas and season with the remaining measured salt and black pepper.",
         "Transfer the meat mixture to a 25cm baking dish.",
         "Spread the mashed potatoes evenly over the meat, using a fork to create textured peaks.",
         "Bake for 20-25 minutes until the top is golden and bubbling.",
         "Divide into six portions. Refrigerate leftovers within 2 hours; consume within 3-4 days. Reheat to 165°F / 74°C."
       ],
-      "allergens": [
-        "Milk"
-      ],
+      "allergens": "Milk",
       "note": "A warming European classic for cooling October evenings.",
       "storage": "Cover tightly and refrigerate for up to 4 days. Can be frozen for up to 1 month; thaw in the refrigerator before reheating.",
-      "photoSearch": "shepherds pie rustic"
+      "photoSearch": "cottage pie"
     },
     {
       "cuisine": "European",
@@ -216,17 +233,13 @@
         "In a small bowl, whisk the goat cheese until creamy and fold in half the chives.",
         "Spread approximately 10g of goat cheese onto each toasted baguette slice.",
         "Top each slice with a small amount of crushed walnuts and a drizzle of honey.",
-        "Garnish with remaining chives.",
+        "Garnish each crostini with the remaining chopped chives, distributing them evenly among all eighteen pieces.",
         "Serve three crostini per person. Refrigerate any leftovers in an airtight container for up to 2 days."
       ],
-      "allergens": [
-        "Wheat",
-        "Milk",
-        "Tree nuts"
-      ],
+      "allergens": "Wheat, Milk, Tree nuts",
       "note": "A sophisticated, simple snack using classic European ingredients.",
       "storage": "Best served immediately. Keep toppings and bread separate if preparing ahead of time.",
-      "photoSearch": "goat cheese crostini honey"
+      "photoSearch": "crostini"
     }
   ],
   "generation": {

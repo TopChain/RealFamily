@@ -26,7 +26,7 @@ def validate(root,edition,photos=True):
             assert isinstance(item['amount'],str) and re.search(r'\d',item['amount']),'Ingredient quantity missing'
         method=normalized(' '.join(r['steps']))
         assert not any(difflib.SequenceMatcher(None,method,normalized(' '.join(old['steps']))).ratio()>.90 for old in past),'Near-identical historical recipe method'
-        assert 5<=len(r['steps'])<=10 and all(isinstance(s,str) and len(s.split())>=9 for s in r['steps']),'Detailed method required'
+        assert 5<=len(r['steps'])<=10 and all(isinstance(s,str) and len(s.split())>=3 for s in r['steps']) and len(' '.join(r['steps']).split())>=100,'Detailed method required'
         for key in ('allergens','note','storage'):assert isinstance(r.get(key),str) and r[key].strip(),key
         assert not re.search(r'\b(wine|beer|brandy|sake|mirin|rum|alcohol)\b',' '.join(i['name'] for i in r['ingredients']),re.I),'Use alcohol-free ingredients'
         if photos:
