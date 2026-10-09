@@ -16,8 +16,8 @@ if(previous)for(const [file,content] of Object.entries(previous)){if(!/^[\w.@-]+
 if(!pairing&&!previous)throw Error('WhatsApp needs phone linking');
 const {state,saveCreds}=await useMultiFileAuthState(folder);let saveChain=Promise.resolve();
 async function save(){const files={};for(const file of await readdir(folder))if(file.endsWith('.json'))files[file]=await readFile(join(folder,file),'utf8');await put('auth',files)}
-function scheduleSave(){saveChain=saveChain.then(save);return saveChain}
-const originalSet=state.keys.set.bind(state.keys);state.keys.set=async data=>{await originalSet(data);await scheduleSave()};
+function scheduleSave(operation=async()=>{}){saveChain=saveChain.then(async()=>{await operation();await save()});return saveChain}
+const originalSet=state.keys.set.bind(state.keys);state.keys.set=data=>scheduleSave(()=>originalSet(data));
 let qr='',status='Preparing secure connection',server;
 if(pairing){
  server=http.createServer(async(req,res)=>{res.setHeader('Cache-Control','no-store');res.setHeader('Content-Type','text/html; charset=utf-8');res.end(`<html><meta http-equiv="refresh" content="10"><title>Real Family WhatsApp linking</title><body style="font:22px system-ui;background:#f6f5ef;color:#183e36;padding:40px;text-align:center"><h1>Real Family</h1><p>${status}</p>${qr?'<img width="320" src="'+await QRCode.toDataURL(qr)+'">':''}<p>WhatsApp → Settings → Linked devices → Link a device</p><p>Daily cards: 7:30 AM PT</p></body></html>`)});server.listen(8770,'127.0.0.1');console.log('Phone linking page ready at http://127.0.0.1:8770');
@@ -58,11 +58,11 @@ async function complete(){
 }
 function connect(){
  socket=makeWASocket({auth:state,logger:pino({level:'silent'}),syncFullHistory:false,shouldSyncHistoryMessage:()=>false,markOnlineOnConnect:false,browser:Browsers.macOS('Chrome'),qrTimeout:120000});
- socket.ev.on('creds.update',async()=>{try{await saveCreds();await scheduleSave()}catch{console.error('Session persistence failed');process.exit(1)}});
+ socket.ev.on('creds.update',async()=>{try{await scheduleSave(saveCreds)}catch{console.error('Session persistence failed');process.exit(1)}});
  socket.ev.on('connection.update',async update=>{
   if(update.qr&&pairing){qr=update.qr;status='Scan this code with your phone. Never share this screen.';await QRCode.toFile('/tmp/realfamily-whatsapp-private/link-device.png',qr,{width:480,margin:4});const {chmod}=await import('node:fs/promises');await chmod('/tmp/realfamily-whatsapp-private/link-device.png',0o600);console.log('Private phone-linking image refreshed.')}
   if(update.connection==='close'&&!done){const code=update.lastDisconnect?.error?.output?.statusCode;if(code===515||pairing&&[408,428].includes(code)&&reconnects++<3)connect();else{console.error('WhatsApp disconnected; status '+(code||'unknown')+'; phone linking or review required.');process.exit(1)}}
-  if(update.connection==='open'&&!done){done=true;try{await complete();await saveChain;if(!pairing){clearTimeout(timeout);socket.end(undefined);await rm(folder,{recursive:true,force:true})}else if(success)clearTimeout(timeout)}catch(error){if(pairing)await writeFile('/tmp/realfamily-whatsapp-private/failure.json',JSON.stringify({stage,error:String(error?.message||'unknown')}),{mode:0o600});status='Setup could not verify all destinations. Please return to Codex.';console.error('Relay failed safely at '+stage+'; no private account details printed.');process.exit(1)}}
+  if(update.connection==='open'&&!done){done=true;try{await complete();await saveChain;if(!pairing){clearTimeout(timeout);await socket.end(undefined);await saveChain;process.exit(0)}else if(success)clearTimeout(timeout)}catch(error){if(pairing)await writeFile('/tmp/realfamily-whatsapp-private/failure.json',JSON.stringify({stage,error:String(error?.message||'unknown')}),{mode:0o600});status='Setup could not verify all destinations. Please return to Codex.';console.error('Relay failed safely at '+stage+'; no private account details printed.');process.exit(1)}}
  });
 }
 connect();
