@@ -1,0 +1,438 @@
+{
+  "theme": "Optimizing Collaborative Projects",
+  "lessons": [
+    {
+      "image": "vocabulary",
+      "level": "B2",
+      "title": "leverage",
+      "meaning": "To use something that you already have in order to achieve a new or better result.",
+      "ipa": "/ˈlɛvərɪdʒ/",
+      "ipaAccent": "en-US",
+      "notes": "Commonly used in professional contexts: leverage our experience or leverage existing data. It implies extracting maximum value from a resource.",
+      "example": "We can leverage our existing software to speed up the new project.",
+      "conversation": "A: How will we meet the deadline?\nB: We should leverage the research we did last quarter.\nA: That is a smart move.\nB: It saves us from starting from scratch.",
+      "exercise": "Rewrite this sentence using 'leverage': 'We should use our previous contacts to help us get this deal.' \nModel Answer: We should leverage our previous contacts to help us get this deal.",
+      "scene": {
+        "background": "#f0f8ff",
+        "description": "A person looking at a chart, pointing to a data point to indicate using it for growth.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#4a90e2",
+            "flip": false,
+            "face": "happy",
+            "pose": "point"
+          }
+        ],
+        "props": [
+          {
+            "kind": "chart",
+            "x": 350,
+            "y": 120,
+            "scale": 1
+          }
+        ]
+      }
+    },
+    {
+      "image": "vocabulary",
+      "level": "C1",
+      "title": "mitigate",
+      "meaning": "To make something less severe, serious, or painful.",
+      "ipa": "/ˈmɪtɪˌɡeɪt/",
+      "ipaAccent": "en-US",
+      "notes": "Used with risks, consequences, or effects. It does not mean to eliminate the problem, but to reduce its negative impact.",
+      "example": "We need to mitigate the risks of this transition before we launch.",
+      "conversation": "A: Is the new server stable?\nB: We have steps to mitigate any potential downtime.\nA: What if it crashes anyway?\nB: We have a backup plan ready.",
+      "exercise": "Fill the gap: 'Taking regular breaks helps to _____ the stress of long work hours.' \nModel Answer: mitigate",
+      "scene": {
+        "background": "#fff5e6",
+        "description": "A person adjusting a balance scale to reduce the weight on one side.",
+        "characters": [
+          {
+            "x": 150,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#e67e22",
+            "flip": false,
+            "face": "calm",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "balance",
+            "x": 400,
+            "y": 150,
+            "scale": 1
+          }
+        ]
+      }
+    },
+    {
+      "image": "phrasal",
+      "level": "B2",
+      "title": "hammer out",
+      "meaning": "To reach an agreement or solve a problem after a lot of discussion or effort.",
+      "notes": "Separable: hammer out the details / hammer them out. Suggests a process of shaping something through persistent negotiation.",
+      "example": "The team spent all morning hammering out the final terms of the contract.",
+      "conversation": "A: Are we ready to sign?\nB: Not yet, we still need to hammer out the payment terms.\nA: That sounds difficult.\nB: It is, but we are making progress.",
+      "exercise": "Complete: 'They managed to _____ (the agreement) after hours of debate.' \nModel Answer: hammer out the agreement",
+      "scene": {
+        "background": "#e8f5e9",
+        "description": "Two people sitting at a table with papers, one holding a pen, looking determinedly at a document.",
+        "characters": [
+          {
+            "x": 100,
+            "y": 100,
+            "scale": 0.9,
+            "shirt": "#2ecc71",
+            "flip": false,
+            "face": "determined",
+            "pose": "cross"
+          },
+          {
+            "x": 300,
+            "y": 100,
+            "scale": 0.9,
+            "shirt": "#27ae60",
+            "flip": true,
+            "face": "determined",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "book",
+            "x": 200,
+            "y": 200,
+            "scale": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "image": "phrasal",
+      "level": "C1",
+      "title": "back up",
+      "meaning": "To provide evidence or support for a claim or theory.",
+      "notes": "Separable: back up your ideas / back them up. Distinguish from 'backup' (noun) or 'back up' (reverse a vehicle).",
+      "example": "You need data to back up your proposal if you want the board to approve it.",
+      "conversation": "A: I think we should switch to this new vendor.\nB: What data do you have to back up that claim?\nA: I have a report here.\nB: Let me look at the figures.",
+      "exercise": "Rewrite using 'back up': 'You should support your argument with facts.' \nModel Answer: You should back up your argument with facts.",
+      "scene": {
+        "background": "#fce4ec",
+        "description": "A person presenting a document to another person as evidence.",
+        "characters": [
+          {
+            "x": 120,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#ec407a",
+            "flip": false,
+            "face": "happy",
+            "pose": "point"
+          },
+          {
+            "x": 350,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#f06292",
+            "flip": true,
+            "face": "curious",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "envelope",
+            "x": 240,
+            "y": 180,
+            "scale": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "image": "idiom",
+      "level": "B2",
+      "title": "a tall order",
+      "meaning": "A request or task that is very difficult to fulfill.",
+      "notes": "Used when someone asks for something that seems nearly impossible given constraints. Not necessarily negative, just challenging.",
+      "example": "Finishing the entire project by Friday is a tall order, but we can try.",
+      "conversation": "A: Can you double the output by tomorrow?\nB: That is a tall order.\nA: I know it is hard.\nB: I will see what we can do.",
+      "exercise": "Use 'a tall order' to describe a difficult deadline: 'Asking for 100 units in one hour is _____.' \nModel Answer: a tall order",
+      "scene": {
+        "background": "#fff9c4",
+        "description": "A person looking at an impossibly long list on a clipboard.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#fbc02d",
+            "flip": false,
+            "face": "worried",
+            "pose": "think"
+          }
+        ],
+        "props": [
+          {
+            "kind": "clipboard",
+            "x": 350,
+            "y": 120,
+            "scale": 1
+          }
+        ]
+      }
+    },
+    {
+      "image": "idiom",
+      "level": "C2",
+      "title": "keep your eyes on the ball",
+      "meaning": "To remain focused on the most important aspect of a situation.",
+      "notes": "Unlike 'read the room', this emphasizes long-term goals over immediate reactions. It implies not getting distracted by minor issues.",
+      "example": "We have many small tasks, but we must keep our eyes on the ball: the final launch date.",
+      "conversation": "A: Should we change the font style now?\nB: Let's keep our eyes on the ball.\nA: You mean focus on the functionality?\nB: Exactly, the design is secondary.",
+      "exercise": "What does this phrase mean in a project? \nModel Answer: It means maintaining focus on the primary objective rather than getting distracted by secondary details.",
+      "scene": {
+        "background": "#e1f5fe",
+        "description": "A person looking through a magnifying glass at a target symbol.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#03a9f4",
+            "flip": false,
+            "face": "determined",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "stars",
+            "x": 350,
+            "y": 100,
+            "scale": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "image": "life",
+      "level": "B2",
+      "title": "I appreciate your transparency.",
+      "meaning": "A polite way to acknowledge someone's honesty about a difficult situation.",
+      "notes": "Use this when someone admits a mistake or shares bad news. It validates their integrity and keeps the professional relationship respectful.",
+      "example": "I appreciate your transparency regarding the budget shortfall.",
+      "conversation": "A: I'm afraid we lost the client.\nB: I appreciate your transparency.\nA: It was a tough call to make.\nB: I understand; let's discuss the next steps.",
+      "exercise": "When would you use this phrase? \nModel Answer: You would use it when someone is honest with you about a negative outcome or a difficult problem.",
+      "scene": {
+        "background": "#f3e5f5",
+        "description": "Two people shaking hands, one looking relieved.",
+        "characters": [
+          {
+            "x": 100,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#9c27b0",
+            "flip": false,
+            "face": "calm",
+            "pose": "reach"
+          },
+          {
+            "x": 300,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#ce93d8",
+            "flip": true,
+            "face": "happy",
+            "pose": "reach"
+          }
+        ],
+        "props": []
+      }
+    },
+    {
+      "image": "grammar",
+      "level": "C2",
+      "title": "Participle Clauses vs. Relative Clauses",
+      "meaning": "Use participle clauses for conciseness; relative clauses for clarity.",
+      "notes": "Rule: Use a present participle (v-ing) to replace an active relative clause (who/which + verb). 'The team working on the project' is shorter than 'The team that is working on the project'. Do not use if the subject is ambiguous.",
+      "example": "The manager, hoping to finish early, skipped the break.",
+      "conversation": "A: The report detailing the loss is here.\nB: Is that better than 'The report that details the loss'?\nA: Yes, it is more concise.\nB: I see how it improves flow.",
+      "exercise": "Shorten this: 'The staff members who are attending the meeting must sign in.' \nModel Answer: The staff members attending the meeting must sign in.",
+      "scene": {
+        "background": "#fafafa",
+        "description": "A person writing on a whiteboard, crossing out extra words.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#757575",
+            "flip": false,
+            "face": "neutral",
+            "pose": "point"
+          }
+        ],
+        "props": [
+          {
+            "kind": "puzzle",
+            "x": 350,
+            "y": 150,
+            "scale": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "image": "quote",
+      "level": "C1",
+      "title": "Clarity is the byproduct of effort, not luck.",
+      "meaning": "Understanding is achieved through hard work and preparation, not by chance.",
+      "notes": "Use this to emphasize that results require intentional action. It is a reminder that you must put in the work to reach a clear conclusion.",
+      "example": "We finally understand the project scope; clarity is the byproduct of effort, not luck.",
+      "conversation": "A: How did you finish the plan so fast?\nB: Clarity is the byproduct of effort, not luck.\nA: You spent all night on it?\nB: Yes, but now the path is clear.",
+      "exercise": "Explain the quote in your own words. \nModel Answer: It means that you only reach a clear understanding by working hard, not by hoping things go well.",
+      "scene": {
+        "background": "#fff",
+        "description": "A person lighting a lightbulb above their head.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#ffeb3b",
+            "flip": false,
+            "face": "happy",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "lightbulb",
+            "x": 350,
+            "y": 80,
+            "scale": 1
+          }
+        ]
+      }
+    },
+    {
+      "image": "small-talk",
+      "level": "B2",
+      "title": "How is your workload looking this week?",
+      "meaning": "A friendly way to check on someone's stress level or availability.",
+      "notes": "This shows empathy for their busy schedule. It is less intrusive than 'What are you doing?'",
+      "conversation": "A: Hi, how is your workload looking this week?\nB: It is quite heavy, actually.\nA: Is there anything I can help with?\nB: That would be great, thanks.\nA: What specific task is the hardest?\nB: The data entry is taking all my time.\nA: I can handle that for you today.\nB: That would be a huge help.",
+      "exercise": "What is a good follow-up if they say it is busy? \nModel Answer: 'Is there anything I can help with?'",
+      "scene": {
+        "background": "#e0f7fa",
+        "description": "Two people chatting while one looks at a calendar.",
+        "characters": [
+          {
+            "x": 100,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#00bcd4",
+            "flip": false,
+            "face": "happy",
+            "pose": "think"
+          },
+          {
+            "x": 300,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#4dd0e1",
+            "flip": true,
+            "face": "neutral",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "clock",
+            "x": 200,
+            "y": 200,
+            "scale": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "image": "essay",
+      "level": "C1",
+      "title": "Mastering Project Coordination",
+      "meaning": "Using strategic communication and effort to align team goals.",
+      "paragraphs": [
+        [
+          "Effective project management requires more than just technical skill; it demands constant alignment."
+        ],
+        [
+          "Managers often struggle to hammer out the details when deadlines are tight. By choosing to leverage team strengths, leaders can mitigate potential risks before they escalate."
+        ],
+        [
+          "Clarity is the byproduct of effort, not luck. Teams keeping their eyes on the ball succeed by backing up their decisions with solid data."
+        ],
+        [
+          "Ultimately, success is found in clear communication and persistent, focused action."
+        ]
+      ],
+      "structure": "Introduction introduces the theme, development paragraphs expand on strategies, and the conclusion summarizes the core philosophy.",
+      "exercise": "Write a four-paragraph essay about a project you managed, incorporating 'leverage', 'hammer out', 'mitigate', and 'back up'.",
+      "connections": [
+        {
+          "lessonTitle": "leverage",
+          "explanation": "Used to describe optimizing resource usage."
+        },
+        {
+          "lessonTitle": "hammer out",
+          "explanation": "Used to describe resolving project details."
+        },
+        {
+          "lessonTitle": "mitigate",
+          "explanation": "Used to describe reducing project risks."
+        },
+        {
+          "lessonTitle": "back up",
+          "explanation": "Used to describe supporting claims with data."
+        },
+        {
+          "lessonTitle": "Clarity is the byproduct of effort, not luck.",
+          "explanation": "Used to frame the necessity of hard work."
+        },
+        {
+          "lessonTitle": "keep your eyes on the ball",
+          "explanation": "Used to suggest focus on primary goals."
+        }
+      ],
+      "scene": {
+        "background": "#f5f5f5",
+        "description": "A person standing at a mountain peak, looking at a map.",
+        "characters": [
+          {
+            "x": 200,
+            "y": 100,
+            "scale": 1,
+            "shirt": "#795548",
+            "flip": false,
+            "face": "happy",
+            "pose": "up"
+          }
+        ],
+        "props": [
+          {
+            "kind": "mountain",
+            "x": 350,
+            "y": 200,
+            "scale": 1
+          }
+        ]
+      }
+    }
+  ]
+}
