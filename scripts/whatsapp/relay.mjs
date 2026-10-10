@@ -7,6 +7,8 @@ import {pacificClock,plan} from './plan.mjs';
 // User confirmed this exact destination after removing the duplicate name.
 const ESSAY_GROUP_NAME='Essay@Family';
 const pairing=process.argv.includes('--pair');const root=resolve(import.meta.dirname,'../..');
+// Recovery runs before the delivery window must exit before opening WhatsApp.
+if(!pairing&&process.env.WHATSAPP_VERIFY_ONLY!=='true'&&!pacificClock().due){console.log('Before 7:30 AM PT; no cards sent.');process.exit(0)}
 const key=Buffer.from(process.env.WHATSAPP_STATE_KEY||'','base64');if(key.length!==32)throw Error('Private encryption key required');
 async function api(action,body){const r=await fetch(process.env.SUBSCRIPTION_ENDPOINT+'?action='+action,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+process.env.MAILER_SECRET},body:JSON.stringify(body),signal:AbortSignal.timeout(25000)});if(!r.ok)throw Error('Private state request failed');return r.json()}
 function seal(value){const iv=randomBytes(12),c=createCipheriv('aes-256-gcm',key,iv);c.setAAD(Buffer.from('real-family-whatsapp-v1'));const data=Buffer.concat([c.update(JSON.stringify(value)),c.final()]);return Buffer.concat([iv,c.getAuthTag(),data]).toString('base64')}
@@ -60,12 +62,13 @@ async function complete(){
  const routes=verifiedRoutes;const deliveryEdition=routes.some(r=>r.category==='Essay')?edition:{...edition,lessons:edition.lessons.filter(l=>l.image!=='essay')};const jobs=plan(deliveryEdition,routes,clock.date);
  // Validate every image before claiming any delivery.
  for(const job of jobs){job.png=await readFile(join(root,'data/english-images',clock.date,job.lesson.filename));if(job.png.toString('hex',0,8)!=='89504e470d0a1a0a'||job.png.readUInt32BE(16)!==(job.lesson.image==='essay'?1434:660)||job.png.readUInt32BE(20)!==(job.lesson.image==='essay'?660:1434))throw Error('Invalid PNG')}
+ let sent=0,skipped=0;
  for(const {lesson,route,png} of jobs){
-  const claimed=await api('wa-claim',{lessonId:lesson.id,destinationHash:createHash('sha256').update(route.jid).digest('hex')});if(!claimed.allowed)continue;
-  try{const msg=await socket.sendMessage(route.jid,{image:png,caption:`${route.category} · ${edition.date} · PT\n${lesson.title}`,fileName:lesson.filename});if(!msg?.key?.id)throw Error('Send result unknown');await scheduleSave();await api('wa-result',{lessonId:lesson.id,status:'sent',messageId:msg.key.id})}
+  const claimed=await api('wa-claim',{lessonId:lesson.id,destinationHash:createHash('sha256').update(route.jid).digest('hex')});if(!claimed.allowed){skipped++;continue;}
+  try{const msg=await socket.sendMessage(route.jid,{image:png,caption:`${route.category} · ${edition.date} · PT\n${lesson.title}`,fileName:lesson.filename});if(!msg?.key?.id)throw Error('Send result unknown');await scheduleSave();await api('wa-result',{lessonId:lesson.id,status:'sent',messageId:msg.key.id});sent++}
   catch{await api('wa-result',{lessonId:lesson.id,status:'uncertain'});throw Error('A send is uncertain; review required before retry')}
  }
- console.log('Daily relay finished; stored message IDs indicate server acceptance, not recipient read status.');
+ console.log(`Daily relay finished: ${sent} sent, ${skipped} already reserved; stored message IDs indicate server acceptance, not recipient read status.`);
 }
 function connect(){
  socket=makeWASocket({auth:state,logger:pino({level:'silent'}),syncFullHistory:false,shouldSyncHistoryMessage:()=>false,markOnlineOnConnect:false,browser:Browsers.macOS('Chrome'),qrTimeout:120000});
